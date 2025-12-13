@@ -51,7 +51,7 @@ export function Hero(): string {
           </div>
 
           <div class="hero-visual glass" aria-hidden="true">
-            <div class="hero-visual-inner" style="background-image: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6)), url('/assets/WhatsApp Image 2025-12-13 at 1.51.44 PM.jpeg');"></div>
+            <div class="hero-visual-inner" style="background-image: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6)), url('${import.meta.env.BASE_URL}assets/WhatsApp Image 2025-12-13 at 1.51.44 PM.jpeg');"></div>
             <div class="hero-visual-caption">
               <span class="hero-visual-kicker">Latest Project</span>
               <span class="hero-visual-title">Dharma Heights, Kukatpally</span>
