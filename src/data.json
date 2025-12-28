@@ -1,0 +1,102 @@
+{
+    "company": {
+        "name": "Dharma Infra",
+        "founded": "December 2021",
+        "tagline": "Every home has a story. Let’s build yours.",
+        "philosophy": "The Story of Home",
+        "leadership": [
+            {
+                "name": "Gottimukkala Gautham",
+                "role": "Managing Director",
+                "bio": "Bachelor of Business Administration",
+                "image": "/images/md-gautham.png"
+            },
+            {
+                "name": "Gottimukkala Yashwanth",
+                "role": "Managing Director",
+                "bio": "B.Tech EEE, MBA in Supply Chain Management",
+                "image": "/images/md-yashwanth.png"
+            }
+        ]
+    },
+    "projects": [
+        {
+            "id": "jewel-crest",
+            "name": "JEWEL CREST",
+            "status": "Completed",
+            "location": "Shirdhi Hills, Gajularamaram",
+            "startDate": "Jan 2022",
+            "handover": "Feb 2023",
+            "units": 20,
+            "size": "808yds",
+            "architect": "Global Engineering",
+            "image": "/images/jewel-crest.png"
+        },
+        {
+            "id": "orchard",
+            "name": "ORCHARD",
+            "status": "Completed",
+            "location": "Diamond Heights, Nalagandla",
+            "startDate": "Feb 2023",
+            "handover": "Feb 2024",
+            "units": 10,
+            "size": "435 yds",
+            "architect": "Global Engineering"
+        },
+        {
+            "id": "silver-square",
+            "name": "SILVER SQUARE",
+            "status": "Completed",
+            "location": "Shirdhi Hills, Gajularamaram",
+            "startDate": "July 2023",
+            "handover": "Aug 2024",
+            "units": 20,
+            "size": "808yds",
+            "architect": "Global Engineering"
+        },
+        {
+            "id": "vrindavan-a",
+            "name": "VRINDAVAN BLOCK A",
+            "status": "Completed",
+            "location": "Kukatpally, Sai Baba Nagar",
+            "startDate": "Aug 2024",
+            "handover": "Oct 2025",
+            "units": 15,
+            "size": "765yds",
+            "architect": "Global Engineering"
+        },
+        {
+            "id": "vrindavan-b",
+            "name": "VRINDAVAN BLOCK B",
+            "status": "Completed",
+            "location": "Kukatpally, Sai Baba Nagar",
+            "startDate": "Aug 2024",
+            "handover": "Oct 2025",
+            "units": 10,
+            "size": "435yds",
+            "architect": "Global Engineering"
+        },
+        {
+            "id": "rs-residences",
+            "name": "RS RESIDENCES",
+            "status": "Ongoing",
+            "location": "Balaji Layout, Gajularamaram",
+            "startDate": "Jan 2025",
+            "handover": "Feb 2026",
+            "units": 10,
+            "size": "534yds",
+            "architect": "Global Engineering"
+        },
+        {
+            "id": "tara-sitara",
+            "name": "TARA & SITARA",
+            "status": "Ongoing",
+            "location": "Mahalakshmi Layout, Dhulapally",
+            "startDate": "Dec 2025",
+            "handover": "Feb 2027",
+            "units": 25,
+            "size": "1240yds",
+            "architect": "Fluid Architects"
+        }
+    ]
+}
