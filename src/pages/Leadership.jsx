@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import data from '../data.json';
+import { processedData as data } from '../utils/data';
 
 const Leadership = () => {
     const { leadership } = data.company;

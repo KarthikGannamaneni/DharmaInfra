@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import data from '../data.json';
+import { processedData as data } from '../utils/data';
+import { getAssetPath } from '../utils/paths';
 
 const Home = () => {
     const { company } = data;
-    const heroImage = data.projects.find(p => p.id === 'jewel-crest')?.image || '/images/jewel-crest.png';
+    const heroImage = data.projects.find(p => p.id === 'jewel-crest')?.image || getAssetPath('/images/jewel-crest.png');
 
     return (
         <>
@@ -25,7 +26,7 @@ const Home = () => {
                         zIndex: 0
                     }}
                 >
-                    <source src="/videos/hero.mp4" type="video/mp4" />
+                    <source src={getAssetPath("/videos/hero.mp4")} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
                 <div style={{

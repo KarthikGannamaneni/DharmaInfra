@@ -1,3 +1,5 @@
+import { getAssetPath } from '../utils/paths';
+
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
@@ -10,7 +12,7 @@ const Footer = () => {
             <div className="container">
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
                     <img
-                        src="/images/logo-full.png"
+                        src={getAssetPath("/images/logo-full.png")}
                         alt="Dharma Infra"
                         style={{ height: '50px', objectFit: 'contain', mixBlendMode: 'multiply' }}
                     />

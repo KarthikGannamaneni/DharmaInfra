@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { getAssetPath } from '../utils/paths';
 
 const Preloader = ({ onComplete }) => {
     const [loaded, setLoaded] = useState(false);
@@ -32,7 +33,7 @@ const Preloader = ({ onComplete }) => {
             }}
         >
             <motion.img
-                src="/images/logo-icon.png"
+                src={getAssetPath("/images/logo-icon.png")}
                 alt="Loading..."
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: [0.8, 1.1, 1], opacity: 1 }}

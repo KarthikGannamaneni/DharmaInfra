@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import data from '../data.json';
+import { processedData as data } from '../utils/data';
 
 const ImageCarousel = ({ images }) => {
     const [index, setIndex] = useState(0);

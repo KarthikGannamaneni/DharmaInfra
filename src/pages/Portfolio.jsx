@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import data from '../data.json';
+import { processedData as data } from '../utils/data';
 
 const Portfolio = () => {
     const { projects } = data;
