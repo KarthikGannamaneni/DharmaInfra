@@ -19,89 +19,119 @@ const Portfolio = () => {
                 visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
                 hover: { scale: 1.02, transition: { duration: 0.2 } }
             }}
-            style={{
-                backgroundColor: 'rgba(255, 255, 255, 0.05)', // 5% opacity white
-                backdropFilter: 'blur(100px)', // 100px blur
-                WebkitBackdropFilter: 'blur(100px)', // Safari support
-                borderRadius: '8px',
-                overflow: 'hidden',
-                border: '1px solid rgba(255, 255, 255, 0.2)', // 1px solid white border at 20% opacity
-                boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.1)', // Subtle drop shadow
-                cursor: 'pointer'
-            }}
+            style={{ position: 'relative' }} // Wrapper needs relative positioning
         >
-            <Link to={`/projects/${project.id}`}>
-                {/* Rectangular Tile: More vertical aspect ratio (3:4) */}
-                <div style={{ aspectRatio: '3/4', width: '100%', backgroundColor: 'rgba(255,255,255,0.05)', position: 'relative' }}>
-                    {project.image ? (
-                        <>
-                            <img src={project.image} alt={project.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                            {/* Hover Tooltip */}
-                            <motion.div
-                                variants={{
-                                    initial: { opacity: 0, y: 10 },
-                                    hover: { opacity: 1, y: 0 }
-                                }}
-                                transition={{ duration: 0.2 }}
-                                style={{
-                                    position: 'absolute',
-                                    bottom: '1rem',
-                                    left: '50%',
-                                    translateX: '-50%', // Use style prop for non-animating properties or it overrides transform
-                                    transform: 'translateX(-50%)',
-                                    backgroundColor: 'rgba(0,0,0,0.8)',
-                                    color: 'white',
-                                    padding: '0.5rem 1rem',
-                                    borderRadius: '20px',
-                                    fontSize: '0.8rem',
-                                    whiteSpace: 'nowrap',
-                                    pointerEvents: 'none'
-                                }}
-                            >
-                                Click for more details
-                            </motion.div>
-                        </>
-                    ) : (
-                        <div style={{
-                            width: '100%',
-                            height: '100%',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: '#7A7E81',
-                            backgroundColor: 'rgba(240,240,240,0.5)',
-                            position: 'relative' // Ensure relative positioning for absolute child
-                        }}>
-                            {project.name}
-                            <motion.div
-                                variants={{
-                                    initial: { opacity: 0, y: 10 },
-                                    hover: { opacity: 1, y: 0 }
-                                }}
-                                transition={{ duration: 0.2 }}
-                                style={{
-                                    position: 'absolute',
-                                    bottom: '1rem',
-                                    backgroundColor: 'rgba(0,0,0,0.8)',
-                                    color: 'white',
-                                    padding: '0.5rem 1rem',
-                                    borderRadius: '20px',
-                                    fontSize: '0.8rem',
-                                    pointerEvents: 'none',
-                                    maxWidth: '90%',
-                                    textAlign: 'center'
-                                }}
-                            >
-                                Click for more details
-                            </motion.div>
-                        </div>
-                    )}
-                </div>
-                <div style={{ padding: '1.5rem' }}>
-                    <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: '#1a1a1a' }}>{project.name}</h3>
-                    <p style={{ color: 'var(--color-accent)', fontSize: '0.875rem', fontWeight: 500 }}>{project.location}</p>
-                </div>
-            </Link>
+            {/* Ambient Shadow Layer */}
+            {project.image && (
+                <div
+                    style={{
+                        position: 'absolute',
+                        inset: '20px', // Shrink slightly so spread is visible
+                        zIndex: 0,
+                        backgroundImage: `url('${project.image}')`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        filter: 'blur(30px) saturate(120%)',
+                        opacity: 0.35,
+                        transform: 'translateY(15px)',
+                    }}
+                />
+            )}
+
+            {/* Liquid Glass Card Layer */}
+            <div
+                style={{
+                    position: 'relative',
+                    zIndex: 1,
+                    borderRadius: '30px',
+                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.05) 100%)',
+                    backdropFilter: 'blur(30px) saturate(200%)',
+                    WebkitBackdropFilter: 'blur(30px) saturate(200%)',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.8)',
+                    borderLeft: '1px solid rgba(255, 255, 255, 0.8)',
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.4)',
+                    borderRight: '1px solid rgba(255, 255, 255, 0.4)',
+                    boxShadow: `
+                        0 10px 30px rgba(0, 0, 0, 0.1), /* Subtle dark anchoring shadow */
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+                        inset 0 4px 10px rgba(255, 255, 255, 0.5)
+                    `,
+                    overflow: 'hidden',
+                    cursor: 'pointer'
+                }}
+            >
+                <Link to={`/projects/${project.id}`} style={{ display: 'block' }}>
+                    {/* Rectangular Tile: More vertical aspect ratio (3:4) */}
+                    <div style={{ aspectRatio: '3/4', width: '100%', backgroundColor: 'rgba(255,255,255,0.05)', position: 'relative' }}>
+                        {project.image ? (
+                            <>
+                                <img src={project.image} alt={project.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                {/* Hover Tooltip */}
+                                <motion.div
+                                    variants={{
+                                        initial: { opacity: 0, y: 10 },
+                                        hover: { opacity: 1, y: 0 }
+                                    }}
+                                    transition={{ duration: 0.2 }}
+                                    style={{
+                                        position: 'absolute',
+                                        bottom: '1rem',
+                                        left: '50%',
+                                        transform: 'translateX(-50%)',
+                                        backgroundColor: 'rgba(0,0,0,0.8)',
+                                        color: 'white',
+                                        padding: '0.5rem 1rem',
+                                        borderRadius: '20px',
+                                        fontSize: '0.8rem',
+                                        whiteSpace: 'nowrap',
+                                        pointerEvents: 'none'
+                                    }}
+                                >
+                                    Click for more details
+                                </motion.div>
+                            </>
+                        ) : (
+                            <div style={{
+                                width: '100%',
+                                height: '100%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: '#7A7E81',
+                                backgroundColor: 'rgba(240,240,240,0.5)',
+                                position: 'relative'
+                            }}>
+                                {project.name}
+                                <motion.div
+                                    variants={{
+                                        initial: { opacity: 0, y: 10 },
+                                        hover: { opacity: 1, y: 0 }
+                                    }}
+                                    transition={{ duration: 0.2 }}
+                                    style={{
+                                        position: 'absolute',
+                                        bottom: '1rem',
+                                        backgroundColor: 'rgba(0,0,0,0.8)',
+                                        color: 'white',
+                                        padding: '0.5rem 1rem',
+                                        borderRadius: '20px',
+                                        fontSize: '0.8rem',
+                                        pointerEvents: 'none',
+                                        maxWidth: '90%',
+                                        textAlign: 'center'
+                                    }}
+                                >
+                                    Click for more details
+                                </motion.div>
+                            </div>
+                        )}
+                    </div>
+                    <div style={{ padding: '1.5rem' }}>
+                        <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: '#1a1a1a' }}>{project.name}</h3>
+                        <p style={{ color: 'var(--color-accent)', fontSize: '0.875rem', fontWeight: 500 }}>{project.location}</p>
+                    </div>
+                </Link>
+            </div>
         </motion.div>
     );
 

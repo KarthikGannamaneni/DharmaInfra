@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import HouseIcon from './icons/HouseIcon';
 
 const FloatingNavbar = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -71,7 +72,11 @@ const FloatingNavbar = () => {
                                             alignItems: 'center'
                                         }}
                                     >
-                                        {link.name}
+                                        {link.name === 'Home' ? (
+                                            <HouseIcon size={24} />
+                                        ) : (
+                                            link.name
+                                        )}
                                         {location.pathname === link.path && (
                                             <motion.div
                                                 layoutId="floating-underline"

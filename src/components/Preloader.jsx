@@ -33,7 +33,7 @@ const Preloader = ({ onComplete }) => {
             }}
         >
             <motion.img
-                src={getAssetPath("/images/logo-icon.png")}
+                src={getAssetPath("/vectors/house-icon.svg")}
                 alt="Loading..."
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: [0.8, 1.1, 1], opacity: 1 }}

@@ -1,8 +1,11 @@
 :root {
   /* Color Palette - Soft Luxury */
-  --color-bg: #F9F8F6; /* Linen White */
-  --color-text: #2D2D2D; /* Charcoal */
-  --color-accent: #4A4E51; /* Warm Slate */
+  --color-bg: #F9F8F6;
+  /* Linen White */
+  --color-text: #2D2D2D;
+  /* Charcoal */
+  --color-accent: #4A4E51;
+  /* Warm Slate */
   --color-accent-light: #7A7E81;
   --color-white: #FFFFFF;
   --color-border: #E0E0E0;
@@ -38,7 +41,16 @@ body {
   font-size: var(--font-size-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Custom Cursor - Removed */
 }
+
+/* Interactive Elements - House Filled */
+a,
+button,
+.pointer,
+input,
+select,
+textarea {}
 
 a {
   color: inherit;
@@ -65,7 +77,12 @@ button {
   color: var(--color-accent);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: var(--spacing-sm);
@@ -91,9 +108,14 @@ h2 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(74, 78, 81, 0.2); /* Warm Slate low opacity */
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(74, 78, 81, 0.4) 30%,
+      rgba(74, 78, 81, 0.4) 70%,
+      rgba(255, 255, 255, 0.5) 100%);
+  /* Warm Slate low opacity */
   border-radius: 20px;
-  border: 3px solid transparent; 
+  border: 3px solid transparent;
   background-clip: content-box;
   transition: background-color 0.3s ease;
   backdrop-filter: blur(4px);

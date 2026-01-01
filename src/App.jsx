@@ -7,11 +7,14 @@ import Portfolio from './pages/Portfolio';
 import ProjectDetail from './pages/ProjectDetail';
 import Preloader from './components/Preloader';
 
+import ScrollToTop from './components/ScrollToTop';
+
 function App() {
   const [loading, setLoading] = useState(true);
 
   return (
     <Router basename="/DharmaInfra/">
+      <ScrollToTop />
       {loading && <Preloader onComplete={() => setLoading(false)} />}
       <Routes>
         <Route path="/" element={<Layout />}>

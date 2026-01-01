@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import HouseIcon from './icons/HouseIcon';
 
 const Navbar = () => {
   const location = useLocation();
@@ -42,10 +43,17 @@ const Navbar = () => {
                   ? (isHome ? '#fff' : 'var(--color-text)')
                   : (isHome ? 'rgba(255, 255, 255, 0.7)' : 'var(--color-accent-light)'),
                 transition: 'color 0.3s ease',
-                fontWeight: 500
+                fontWeight: 500,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
             >
-              {link.name}
+              {link.name === 'Home' ? (
+                <HouseIcon size={24} />
+              ) : (
+                link.name
+              )}
             </Link>
             {location.pathname === link.path && (
               <motion.div
