@@ -11,7 +11,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <Router>
+    <Router basename="/DharmaInfra">
       {loading && <Preloader onComplete={() => setLoading(false)} />}
       <Routes>
         <Route path="/" element={<Layout />}>
