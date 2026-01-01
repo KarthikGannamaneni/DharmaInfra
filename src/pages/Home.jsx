@@ -81,7 +81,7 @@ const Home = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 style={{ marginBottom: '2rem', color: 'var(--color-accent)' }}>{company.philosophy}</h2>
+                        <h2 style={{ marginBottom: '2rem', color: 'var(--color-accent)', fontSize: '3rem' }}>{company.philosophy}</h2>
                         <p style={{
                             fontSize: '1.25rem',
                             lineHeight: 1.8,

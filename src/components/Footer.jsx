@@ -5,7 +5,6 @@ const Footer = () => {
         <footer style={{
             padding: '4rem 1rem',
             backgroundColor: '#F2F1EF', // Slightly darker than bg
-            marginTop: '4rem',
             textAlign: 'center'
         }}>
             <div className="container">

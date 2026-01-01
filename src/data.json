@@ -21,60 +21,24 @@
     },
     "projects": [
         {
-            "id": "jewel-crest",
-            "name": "JEWEL CREST",
-            "status": "Completed",
-            "location": "Shirdhi Hills, Gajularamaram",
-            "startDate": "Jan 2022",
-            "handover": "Feb 2023",
-            "units": 20,
-            "size": "808yds",
-            "architect": "Global Engineering",
-            "image": "/images/jewel-crest.png"
-        },
-        {
-            "id": "orchard",
-            "name": "ORCHARD",
-            "status": "Completed",
-            "location": "Diamond Heights, Nalagandla",
-            "startDate": "Feb 2023",
-            "handover": "Feb 2024",
-            "units": 10,
-            "size": "435 yds",
-            "architect": "Global Engineering"
-        },
-        {
-            "id": "silver-square",
-            "name": "SILVER SQUARE",
-            "status": "Completed",
-            "location": "Shirdhi Hills, Gajularamaram",
-            "startDate": "July 2023",
-            "handover": "Aug 2024",
-            "units": 20,
-            "size": "808yds",
-            "architect": "Global Engineering"
-        },
-        {
-            "id": "vrindavan-a",
-            "name": "VRINDAVAN BLOCK A",
-            "status": "Completed",
-            "location": "Kukatpally, Sai Baba Nagar",
-            "startDate": "Aug 2024",
-            "handover": "Oct 2025",
-            "units": 15,
-            "size": "765yds",
-            "architect": "Global Engineering"
-        },
-        {
-            "id": "vrindavan-b",
-            "name": "VRINDAVAN BLOCK B",
-            "status": "Completed",
-            "location": "Kukatpally, Sai Baba Nagar",
-            "startDate": "Aug 2024",
-            "handover": "Oct 2025",
-            "units": 10,
-            "size": "435yds",
-            "architect": "Global Engineering"
+            "id": "tara-sitara",
+            "name": "TARA & SITARA",
+            "status": "Ongoing",
+            "location": "Mahalakshmi Layout, Dhulapally",
+            "startDate": "Dec 2025",
+            "handover": "Feb 2027",
+            "units": 25,
+            "size": "1240yds",
+            "architect": "Fluid Architects",
+            "locationMap": "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d368.35807264125737!2d78.46944434846596!3d17.541488828955966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1766987707297!5m2!1sen!2sus",
+            "image": "/project_assets/TARA & SITARA/Elevation.jpeg",
+            "gallery": [
+                "/project_assets/TARA & SITARA/1.jpeg"
+            ],
+            "floorPlans": [
+                "/project_assets/TARA & SITARA/DI_tara_sitara_B_0F.pdf",
+                "/project_assets/TARA & SITARA/DI_tara_sitara_B_TY.pdf"
+            ]
         },
         {
             "id": "rs-residences",
@@ -85,18 +49,153 @@
             "handover": "Feb 2026",
             "units": 10,
             "size": "534yds",
-            "architect": "Global Engineering"
+            "architect": "Global Engineering",
+            "locationMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2806.0948221339336!2d78.4214599547487!3d17.52839567306413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8f003fa7d443%3A0x760dcc5221041690!2sRs%20residences!5e0!3m2!1sen!2sus!4v1766987350612!5m2!1sen!2sus",
+            "image": "/project_assets/RS RESIDENCES/Elevation.jpg",
+            "gallery": [],
+            "floorPlans": [
+                "/project_assets/RS RESIDENCES/REV _DHARMA INFRA _80X60 _ CENTER LINE AND FOOTINGS-Model (1).pdf"
+            ]
         },
         {
-            "id": "tara-sitara",
-            "name": "TARA & SITARA",
-            "status": "Ongoing",
-            "location": "Mahalakshmi Layout, Dhulapally",
-            "startDate": "Dec 2025",
-            "handover": "Feb 2027",
-            "units": 25,
-            "size": "1240yds",
-            "architect": "Fluid Architects"
+            "id": "vrindavan-a",
+            "name": "VRINDAVAN BLOCK A",
+            "status": "Completed",
+            "location": "Kukatpally, Sai Baba Nagar",
+            "startDate": "Aug 2024",
+            "handover": "Oct 2025",
+            "units": 15,
+            "size": "765yds",
+            "architect": "Global Engineering",
+            "locationMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d969.0323789276836!2d78.42441737671516!3d17.486629151597636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91001d5bf9a5%3A0x3ac74beee75af007!2sVrindavan%20block%20A!5e1!3m2!1sen!2sus!4v1766986951577!5m2!1sen!2sus",
+            "image": "/project_assets/VRINDAVAN BLOCK A/Elevation.jpg",
+            "gallery": [
+                "/project_assets/VRINDAVAN BLOCK A/1.jpeg",
+                "/project_assets/VRINDAVAN BLOCK A/2.jpeg",
+                "/project_assets/VRINDAVAN BLOCK A/3.jpeg",
+                "/project_assets/VRINDAVAN BLOCK A/4.jpeg",
+                "/project_assets/VRINDAVAN BLOCK A/5.jpeg",
+                "/project_assets/VRINDAVAN BLOCK A/6.jpeg",
+                "/project_assets/VRINDAVAN BLOCK A/7.jpeg",
+                "/project_assets/VRINDAVAN BLOCK A/8.jpeg",
+                "/project_assets/VRINDAVAN BLOCK A/9.jpeg",
+                "/project_assets/VRINDAVAN BLOCK A/10.jpeg"
+            ],
+            "floorPlans": [
+                "/project_assets/VRINDAVAN BLOCK A/DHARAM INFRA @ KUKATPALLT-EAST ROAD 765 SQ YDS-Model.pdf",
+                "/project_assets/VRINDAVAN BLOCK A/DHARAM INFRA @ KUKATPALLY-EAST ROAD 765 SQ YDS (1).pdf",
+                "/project_assets/VRINDAVAN BLOCK A/DHARAM INFRA @ KUKATPALLY-EAST ROAD 765 SQ YDS.pdf"
+            ]
+        },
+        {
+            "id": "vrindavan-b",
+            "name": "VRINDAVAN BLOCK B",
+            "status": "Completed",
+            "location": "Kukatpally, Sai Baba Nagar",
+            "startDate": "Aug 2024",
+            "handover": "Oct 2025",
+            "units": 10,
+            "size": "435yds",
+            "architect": "Global Engineering",
+            "locationMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d969.0323789276836!2d78.42441737671516!3d17.486629151597636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91001d5bf9a5%3A0x3ac74beee75af007!2sVrindavan%20block%20A!5e1!3m2!1sen!2sus!4v1766986951577!5m2!1sen!2sus",
+            "image": "/project_assets/VRINDAVAN BLOCK B/Elevation.jpg",
+            "gallery": [
+                "/project_assets/VRINDAVAN BLOCK B/1.jpeg",
+                "/project_assets/VRINDAVAN BLOCK B/2.jpeg",
+                "/project_assets/VRINDAVAN BLOCK B/3.jpeg",
+                "/project_assets/VRINDAVAN BLOCK B/4.jpeg",
+                "/project_assets/VRINDAVAN BLOCK B/5.jpeg",
+                "/project_assets/VRINDAVAN BLOCK B/6.jpeg"
+            ],
+            "floorPlans": [
+                "/project_assets/VRINDAVAN BLOCK B/TYPICAL FLOOR PLAN- 435 SQ.YDS.pdf"
+            ]
+        },
+        {
+            "id": "silver-square",
+            "name": "SILVER SQUARE",
+            "status": "Completed",
+            "location": "Shirdhi Hills, Gajularamaram",
+            "startDate": "July 2023",
+            "handover": "Aug 2024",
+            "units": 20,
+            "size": "808yds",
+            "architect": "Global Engineering",
+            "locationMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1902.4237786148744!2d78.4206145!3d17.514789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91003fe8e5f9%3A0x471667dd086f048a!2sSilver%20Square%20Apartments!5e0!3m2!1sen!2sus!4v1766987238285!5m2!1sen!2sus",
+            "image": "/project_assets/SILVER SQUARE/Elevation.jpeg",
+            "gallery": [
+                "/project_assets/SILVER SQUARE/1.jpeg",
+                "/project_assets/SILVER SQUARE/2.jpeg",
+                "/project_assets/SILVER SQUARE/3.jpeg",
+                "/project_assets/SILVER SQUARE/4.jpeg",
+                "/project_assets/SILVER SQUARE/5.jpeg",
+                "/project_assets/SILVER SQUARE/6.jpeg",
+                "/project_assets/SILVER SQUARE/7.jpeg",
+                "/project_assets/SILVER SQUARE/8.jpeg",
+                "/project_assets/SILVER SQUARE/9.jpeg",
+                "/project_assets/SILVER SQUARE/10.jpeg"
+            ],
+            "floorPlans": [
+                "/project_assets/SILVER SQUARE/DHARMA INFRA _ GAJULARAMARAM-Model.pdf"
+            ]
+        },
+        {
+            "id": "orchard",
+            "name": "ORCHARD",
+            "status": "Completed",
+            "location": "Diamond Heights, Nalagandla",
+            "startDate": "Feb 2023",
+            "handover": "Feb 2024",
+            "units": 10,
+            "size": "435 yds",
+            "architect": "Global Engineering",
+            "locationMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.0353331555752!2d78.30093667596512!3d17.458022883441277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93006850da4d%3A0x87eedc6490280348!2sThe%20Orchard!5e0!3m2!1sen!2sus!4v1766987302258!5m2!1sen!2sus",
+            "image": "/project_assets/THE ORCHARD/Elevation.jpeg",
+            "gallery": [
+                "/project_assets/THE ORCHARD/1.jpeg",
+                "/project_assets/THE ORCHARD/2.jpeg",
+                "/project_assets/THE ORCHARD/3.jpeg",
+                "/project_assets/THE ORCHARD/4.jpeg",
+                "/project_assets/THE ORCHARD/5.jpeg",
+                "/project_assets/THE ORCHARD/6.jpeg",
+                "/project_assets/THE ORCHARD/7.jpeg",
+                "/project_assets/THE ORCHARD/8.jpeg",
+                "/project_assets/THE ORCHARD/9.jpeg",
+                "/project_assets/THE ORCHARD/10.jpeg",
+                "/project_assets/THE ORCHARD/11.jpeg"
+            ],
+            "floorPlans": [
+                "/project_assets/THE ORCHARD/DHARMA INFRA @ NALLAGANDLA-Model-01.pdf"
+            ]
+        },
+        {
+            "id": "jewel-crest",
+            "name": "JEWEL CREST",
+            "status": "Completed",
+            "location": "Shirdhi Hills, Gajularamaram",
+            "startDate": "Jan 2022",
+            "handover": "Feb 2023",
+            "units": 20,
+            "size": "808yds",
+            "architect": "Global Engineering",
+            "locationMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.8464363803396!2d78.41737587596614!3d17.514842483394244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91a7c1a5e977%3A0x8373f7dfe5d18738!2sJewel%20Crest!5e0!3m2!1sen!2sus!4v1766987166961!5m2!1sen!2sus",
+            "image": "/project_assets/JEWEL CREST/Elevation.jpeg",
+            "gallery": [
+                "/project_assets/JEWEL CREST/1.jpeg",
+                "/project_assets/JEWEL CREST/2.jpeg",
+                "/project_assets/JEWEL CREST/3.jpeg",
+                "/project_assets/JEWEL CREST/4.jpeg",
+                "/project_assets/JEWEL CREST/5.jpeg",
+                "/project_assets/JEWEL CREST/6.jpeg",
+                "/project_assets/JEWEL CREST/7.jpeg",
+                "/project_assets/JEWEL CREST/8.jpeg",
+                "/project_assets/JEWEL CREST/9.jpeg",
+                "/project_assets/JEWEL CREST/10.jpeg"
+            ],
+            "floorPlans": [
+                "/project_assets/JEWEL CREST/TYPICAL FLOOR PLAN--RD (1).pdf",
+                "/project_assets/JEWEL CREST/TYPICAL FLOOR PLAN--RD.pdf"
+            ]
         }
     ]
 }

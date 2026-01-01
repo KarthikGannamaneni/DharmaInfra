@@ -13,7 +13,7 @@ const Leadership = () => {
                     transition={{ duration: 0.6 }}
                     style={{ textAlign: 'center', marginBottom: '4rem' }}
                 >
-                    <h1 style={{ marginBottom: '1rem' }}>Leadership</h1>
+                    <h1 style={{ marginBottom: '1rem' }}>About Us</h1>
                     <p style={{ maxWidth: '600px', margin: '0 auto', color: 'var(--color-accent)' }}>
                         Guided by visionaries dedicated to excellence and innovation.
                     </p>

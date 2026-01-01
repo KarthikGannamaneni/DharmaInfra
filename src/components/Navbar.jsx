@@ -3,37 +3,44 @@ import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const location = useLocation();
-  const links = [
+  const navItems = [
+    { name: 'About Us', path: '/leadership' },
     { name: 'Home', path: '/' },
-    { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Leadership', path: '/leadership' },
+    { name: 'Projects', path: '/portfolio' }
   ];
+
+  const isHome = location.pathname === '/';
 
   return (
     <nav style={{
-      padding: '2rem 1rem',
-      display: 'grid',
-      gridTemplateColumns: '1fr auto 1fr',
+      position: 'absolute',
+      top: '2rem',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      zIndex: 10,
+      width: 'fit-content',
+      display: 'flex',
+      justifyContent: 'center',
       alignItems: 'center',
-      width: '100%',
-      position: 'relative',
-      zIndex: 10
-    }}>
-      <Link to="/" style={{ display: 'flex', alignItems: 'center', justifySelf: 'start' }}>
-        <img
-          src="/images/logo-full.png"
-          alt="Dharma Infra"
-          style={{ height: '40px', objectFit: 'contain', mixBlendMode: 'multiply' }}
-        />
-      </Link>
 
-      <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', justifySelf: 'center' }}>
-        {links.map((link) => (
+      // Liquid Glass Pill Styles
+      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1))',
+      backdropFilter: 'blur(20px) saturate(180%)',
+      WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+      padding: '0.75rem 2rem',
+      borderRadius: '50px',
+      boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.1)',
+      border: '1px solid rgba(255, 255, 255, 0.5)'
+    }}>
+      <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}>
+        {navItems.map((link) => (
           <li key={link.name}>
             <Link
               to={link.path}
               style={{
-                color: location.pathname === link.path ? 'var(--color-text)' : 'var(--color-accent-light)',
+                color: location.pathname === link.path
+                  ? (isHome ? '#fff' : 'var(--color-text)')
+                  : (isHome ? 'rgba(255, 255, 255, 0.7)' : 'var(--color-accent-light)'),
                 transition: 'color 0.3s ease',
                 fontWeight: 500
               }}
@@ -45,7 +52,7 @@ const Navbar = () => {
                 layoutId="underline"
                 style={{
                   height: '1px',
-                  backgroundColor: 'var(--color-text)',
+                  backgroundColor: isHome ? '#fff' : 'var(--color-text)',
                   marginTop: '4px'
                 }}
               />
