@@ -1,11 +1,13 @@
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { processedData as data } from '../utils/data';
 import { getAssetPath } from '../utils/paths';
+import ui from '../config/ui';
+import Button from '../components/Button';
 
 const Home = () => {
     const { company } = data;
-    const heroImage = data.projects.find(p => p.id === 'jewel-crest')?.image || getAssetPath('/images/jewel-crest.png');
 
     return (
         <>
@@ -55,19 +57,10 @@ const Home = () => {
                         }}>
                             {company.tagline}
                         </h1>
-                        <Link to="/portfolio">
-                            <button style={{
-                                padding: '1rem 2rem',
-                                fontSize: '1rem',
-                                backgroundColor: 'rgba(255,255,255,0.9)',
-                                color: '#2D2D2D',
-                                border: 'none',
-                                borderRadius: '4px',
-                                marginTop: '1rem',
-                                transition: 'background 0.3s'
-                            }}>
-                                View Projects
-                            </button>
+                        <Link to="/portfolio" style={{ display: 'inline-block', marginBottom: '3rem' }}>
+                            <Button>
+                                {ui.home.heroButton}
+                            </Button>
                         </Link>
                     </motion.div>
                 </div>
@@ -82,14 +75,14 @@ const Home = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 style={{ marginBottom: '2rem', color: 'var(--color-accent)', fontSize: '3rem' }}>{company.philosophy}</h2>
+                        <h2 style={{ marginBottom: '2rem', color: 'var(--color-accent)', fontSize: '3rem' }}>{ui.home.philosophyTitle}</h2>
                         <p style={{
                             fontSize: '1.25rem',
                             lineHeight: 1.8,
                             color: 'var(--color-text)',
                             marginBottom: '2rem'
                         }}>
-                            At {company.name}, we believe that every structure is more than just bricks and mortar—it's a canvas for life's most cherished moments. Founded in {company.founded}, we are dedicated to creating spaces that blend modern luxury with the timeless principles of Vastu, ensuring light, ventilation, and harmony in every home.
+                            {ui.home.philosophyBody(company.name, company.founded)}
                         </p>
                         <div style={{ width: '60px', height: '2px', backgroundColor: 'var(--color-accent)', margin: '0 auto' }}></div>
                     </motion.div>

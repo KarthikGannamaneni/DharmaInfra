@@ -10,7 +10,7 @@ const FloatingNavbar = () => {
     const navItems = [
         { name: 'About Us', path: '/leadership' },
         { name: 'Home', path: '/' },
-        { name: 'Projects', path: '/portfolio' }
+        { name: 'Projects', path: '/projects' }
     ];
 
     useEffect(() => {

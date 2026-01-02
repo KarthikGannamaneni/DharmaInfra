@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { processedData as data } from '../utils/data';
+import ui from '../config/ui';
 
 const ImageCarousel = ({ images }) => {
     const [index, setIndex] = useState(0);
@@ -57,8 +58,8 @@ const ProjectDetail = () => {
     if (!project) {
         return (
             <div className="section container" style={{ textAlign: 'center', minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                <h2>Project Not Found</h2>
-                <Link to="/portfolio" style={{ marginTop: '1rem', color: 'var(--color-accent)', textDecoration: 'underline' }}>Back to Projects</Link>
+                <h2>{ui.projectDetail.notFound}</h2>
+                <Link to="/portfolio" style={{ marginTop: '1rem', color: 'var(--color-accent)', textDecoration: 'underline' }}>{ui.projectDetail.backLink}</Link>
             </div>
         );
     }
@@ -81,7 +82,7 @@ const ProjectDetail = () => {
                     <img src={project.image} alt={project.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 ) : (
                     <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#eee', color: '#999' }}>
-                        No Image Available
+                        {ui.common.noImage}
                     </div>
                 )}
                 <div style={{
@@ -102,51 +103,51 @@ const ProjectDetail = () => {
             {/* Details Grid */}
             <div className="container">
                 <Link to="/portfolio" style={{ display: 'inline-block', marginBottom: '2rem', color: 'var(--color-accent)', fontWeight: 500 }}>
-                    &larr; Back to Projects
+                    {ui.common.backToProjects}
                 </Link>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', marginBottom: '4rem' }}>
                     <div>
-                        <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>Project Overview</h3>
+                        <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>{ui.common.overview}</h3>
                         <p style={{ lineHeight: 1.8, color: 'var(--color-text)', marginBottom: '2rem' }}>
-                            {project.description || `${project.name} is a ${project.status.toLowerCase()} residential project by Dharma Infra, located in ${project.location}. Designed by ${project.architect}, it offers premium living spaces with a focus on Vastu compliance and modern amenities.`}
+                            {project.description || ui.projectDetail.descriptionFallback(project.name, project.status, project.location, project.architect)}
                         </p>
                     </div>
 
                     <div>
-                        <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>Specifications</h3>
+                        <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>{ui.common.specifications}</h3>
                         <ul style={{ listStyle: 'none' }}>
                             <li style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between' }}>
-                                <span style={{ color: 'var(--color-accent)' }}>Status</span>
+                                <span style={{ color: 'var(--color-accent)' }}>{ui.common.status}</span>
                                 <span style={{ fontWeight: 500 }}>{project.status}</span>
                             </li>
                             {project.units && (
                                 <li style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between' }}>
-                                    <span style={{ color: 'var(--color-accent)' }}>Units</span>
+                                    <span style={{ color: 'var(--color-accent)' }}>{ui.common.units}</span>
                                     <span style={{ fontWeight: 500 }}>{project.units}</span>
                                 </li>
                             )}
                             {project.size && (
                                 <li style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between' }}>
-                                    <span style={{ color: 'var(--color-accent)' }}>Plot Size</span>
+                                    <span style={{ color: 'var(--color-accent)' }}>{ui.common.plotSize}</span>
                                     <span style={{ fontWeight: 500 }}>{project.size}</span>
                                 </li>
                             )}
                             {project.architect && (
                                 <li style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between' }}>
-                                    <span style={{ color: 'var(--color-accent)' }}>Architect</span>
+                                    <span style={{ color: 'var(--color-accent)' }}>{ui.common.architect}</span>
                                     <span style={{ fontWeight: 500 }}>{project.architect}</span>
                                 </li>
                             )}
                             {project.startDate && (
                                 <li style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between' }}>
-                                    <span style={{ color: 'var(--color-accent)' }}>Start Date</span>
+                                    <span style={{ color: 'var(--color-accent)' }}>{ui.common.startDate}</span>
                                     <span style={{ fontWeight: 500 }}>{project.startDate}</span>
                                 </li>
                             )}
                             {project.handover && (
                                 <li style={{ marginBottom: '1rem', display: 'flex', justifyContent: 'space-between' }}>
-                                    <span style={{ color: 'var(--color-accent)' }}>Handover</span>
+                                    <span style={{ color: 'var(--color-accent)' }}>{ui.common.handover}</span>
                                     <span style={{ fontWeight: 500 }}>{project.handover}</span>
                                 </li>
                             )}
@@ -157,7 +158,7 @@ const ProjectDetail = () => {
                 {/* Location Map */}
                 {project.locationMap && (
                     <div style={{ marginBottom: '4rem' }}>
-                        <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>Location</h3>
+                        <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>{ui.common.location}</h3>
                         <div style={{ width: '100%', aspectRatio: '16/9', backgroundColor: '#f5f5f5', borderRadius: '8px', overflow: 'hidden' }}>
                             <iframe
                                 src={project.locationMap}
@@ -176,7 +177,7 @@ const ProjectDetail = () => {
                 {/* Gallery Carousel */}
                 {project.gallery && project.gallery.length > 0 && (
                     <div style={{ marginBottom: '4rem' }}>
-                        <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>Gallery</h3>
+                        <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>{ui.common.gallery}</h3>
                         <ImageCarousel images={project.gallery} />
                     </div>
                 )}
@@ -184,7 +185,7 @@ const ProjectDetail = () => {
                 {/* Floor Plans */}
                 {project.floorPlans && project.floorPlans.length > 0 && (
                     <div>
-                        <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>Floor Plans</h3>
+                        <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>{ui.common.floorPlans}</h3>
                         <div style={{ display: 'grid', gap: '2rem' }}>
                             {project.floorPlans.map((plan, index) => (
                                 <div key={index} style={{ height: '600px', backgroundColor: '#f9f9f9', border: '1px solid #eee' }}>

@@ -3,8 +3,9 @@ import { useState } from 'react';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Leadership from './pages/Leadership';
-import Portfolio from './pages/Portfolio';
+import OldProjects from './pages/OldProjects';
 import ProjectDetail from './pages/ProjectDetail';
+import Projects from './pages/Projects';
 import Preloader from './components/Preloader';
 
 import ScrollToTop from './components/ScrollToTop';
@@ -20,7 +21,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="leadership" element={<Leadership />} />
-          <Route path="portfolio" element={<Portfolio />} />
+          <Route path="old-projects" element={<OldProjects />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="portfolio" element={<OldProjects />} /> {/* Redirect/Alias if needed, or just replace */}
           <Route path="projects/:id" element={<ProjectDetail />} />
         </Route>
       </Routes>

@@ -1,22 +1,21 @@
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { processedData as data } from '../utils/data';
+import ui from '../config/ui';
 
 const Leadership = () => {
     const { leadership } = data.company;
 
     return (
-        <section className="section">
+        <section className="section" style={{ paddingTop: '140px' }}>
             <div className="container">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    style={{ textAlign: 'center', marginBottom: '4rem' }}
+                    style={{ textAlign: 'left', marginBottom: '4rem' }}
                 >
-                    <h1 style={{ marginBottom: '1rem' }}>About Us</h1>
-                    <p style={{ maxWidth: '600px', margin: '0 auto', color: 'var(--color-accent)' }}>
-                        Guided by visionaries dedicated to excellence and innovation.
-                    </p>
+                    <h1 style={{ marginBottom: '1rem' }}>{ui.leadership.title}</h1>
                 </motion.div>
 
                 <div style={{
