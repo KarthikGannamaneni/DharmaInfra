@@ -1,8 +1,12 @@
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import { getAssetPath } from '../utils/paths';
 
-const Preloader = ({ onComplete }) => {
+interface PreloaderProps {
+    onComplete: () => void;
+}
+
+const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {

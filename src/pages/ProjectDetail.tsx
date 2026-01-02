@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { processedData as data } from '../utils/data';
 import ui from '../config/ui';
 
-const ImageCarousel = ({ images }) => {
+interface ImageCarouselProps {
+    images: string[];
+}
+
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -51,8 +55,12 @@ const ImageCarousel = ({ images }) => {
     );
 };
 
-const ProjectDetail = () => {
-    const { id } = useParams();
+interface ProjectDetailParams extends Record<string, string | undefined> {
+    id: string;
+}
+
+const ProjectDetail: React.FC = () => {
+    const { id } = useParams<ProjectDetailParams>();
     const project = data.projects.find(p => p.id === id);
 
     if (!project) {
@@ -63,6 +71,9 @@ const ProjectDetail = () => {
             </div>
         );
     }
+
+    // Fallback description logic
+    const description = project.description || ui.projectDetail.descriptionFallback(project.name, project.status, project.location, project.architect);
 
     return (
         <div style={{ paddingBottom: '4rem', paddingTop: '8rem' }}>
@@ -110,7 +121,7 @@ const ProjectDetail = () => {
                     <div>
                         <h3 style={{ borderBottom: '1px solid #ddd', paddingBottom: '0.5rem', marginBottom: '1.5rem' }}>{ui.common.overview}</h3>
                         <p style={{ lineHeight: 1.8, color: 'var(--color-text)', marginBottom: '2rem' }}>
-                            {project.description || ui.projectDetail.descriptionFallback(project.name, project.status, project.location, project.architect)}
+                            {description}
                         </p>
                     </div>
 
@@ -165,7 +176,7 @@ const ProjectDetail = () => {
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
-                                allowFullScreen=""
+                                allowFullScreen={true}
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                                 title={`${project.name} Location`}

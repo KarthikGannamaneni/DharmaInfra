@@ -22,7 +22,7 @@ const ui = {
     home: {
         heroButton: "View Projects",
         philosophyTitle: "The Story of Home", // Default if not in data
-        philosophyBody: (name, founded) => `At ${name}, we believe that every structure is more than just bricks and mortar—it's a canvas for life's most cherished moments. Founded in ${founded}, we are dedicated to creating spaces that blend modern luxury with the timeless principles of Vastu, ensuring light, ventilation, and harmony in every home.`
+        philosophyBody: (name: string, founded: string) => `At ${name}, we believe that every structure is more than just bricks and mortar—it's a canvas for life's most cherished moments. Founded in ${founded}, we are dedicated to creating spaces that blend modern luxury with the timeless principles of Vastu, ensuring light, ventilation, and harmony in every home.`
     },
     portfolio: {
         title: "Our Projects",
@@ -33,7 +33,7 @@ const ui = {
     projectDetail: {
         notFound: "Project Not Found",
         backLink: "Back to Projects",
-        descriptionFallback: (name, status, location, architect) => `${name} is a ${status.toLowerCase()} residential project by Dharma Infra, located in ${location}. Designed by ${architect}, it offers premium living spaces with a focus on Vastu compliance and modern amenities.`
+        descriptionFallback: (name: string, status: string, location: string, architect: string) => `${name} is a ${status.toLowerCase()} residential project by Dharma Infra, located in ${location}. Designed by ${architect}, it offers premium living spaces with a focus on Vastu compliance and modern amenities.`
     },
     leadership: {
         title: "About Us",

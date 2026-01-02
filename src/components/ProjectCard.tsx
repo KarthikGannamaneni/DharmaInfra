@@ -1,8 +1,14 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ui from '../config/ui';
+import { Project } from '../types';
 
-const ProjectCard = ({ project }) => {
+interface ProjectCardProps {
+    project: Project;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
         <motion.div
             initial="initial"

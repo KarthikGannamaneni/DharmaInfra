@@ -1,6 +1,14 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 
-const SectionHeader = ({ title, children, className = "", style = {} }) => {
+interface SectionHeaderProps {
+    title?: string;
+    children?: React.ReactNode;
+    className?: string;
+    style?: React.CSSProperties;
+}
+
+const SectionHeader: React.FC<SectionHeaderProps> = ({ title, children, className = "", style = {} }) => {
     return (
         <motion.h3
             initial={{ opacity: 0, x: -20 }}

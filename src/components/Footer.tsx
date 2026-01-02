@@ -1,6 +1,7 @@
+import React from 'react';
 import HouseIcon from './icons/HouseIcon';
 
-const Footer = () => {
+const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
 
     return (

@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { processedData as data } from '../utils/data';
@@ -6,7 +6,7 @@ import { getAssetPath } from '../utils/paths';
 import ui from '../config/ui';
 import Button from '../components/Button';
 
-const Home = () => {
+const Home: React.FC = () => {
     const { company } = data;
 
     return (

@@ -1,9 +1,9 @@
-// eslint-disable-next-line no-unused-vars
+import React from 'react';
 import { motion } from 'framer-motion';
 import { processedData as data } from '../utils/data';
 import ui from '../config/ui';
 
-const Leadership = () => {
+const Leadership: React.FC = () => {
     const { leadership } = data.company;
 
     return (

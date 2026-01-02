@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import HouseIcon from './icons/HouseIcon';
 
-const FloatingNavbar = () => {
+const FloatingNavbar: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
     const location = useLocation();
 
@@ -81,8 +81,7 @@ const FloatingNavbar = () => {
                                             <motion.div
                                                 layoutId="floating-underline"
                                                 style={{
-                                                    height: '2px', // Keeping 2px for floating nav as it might need to be bolder, or switch to 1px to match. Top is 1px. Let's try 1px to be consistent? The user said "line under... covering the full word".
-                                                    // I'll keep 2px as it was, just change width.
+                                                    height: '2px',
                                                     width: '100%',
                                                     backgroundColor: 'var(--color-text)',
                                                     marginTop: '2px',

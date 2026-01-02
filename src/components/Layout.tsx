@@ -1,9 +1,10 @@
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import FloatingNavbar from './FloatingNavbar';
 import Footer from './Footer';
 
-const Layout = () => {
+const Layout: React.FC = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Navbar />

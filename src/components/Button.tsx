@@ -1,6 +1,11 @@
-import { motion } from 'framer-motion';
+import React from 'react';
+import { motion, HTMLMotionProps } from 'framer-motion';
 
-const Button = ({ children, onClick, style = {}, className = "", ...props }) => {
+interface ButtonProps extends HTMLMotionProps<"button"> {
+    children?: React.ReactNode;
+}
+
+const Button: React.FC<ButtonProps> = ({ children, onClick, style = {}, className = "", ...props }) => {
     return (
         <motion.button
             whileHover={{ scale: 1.05 }}

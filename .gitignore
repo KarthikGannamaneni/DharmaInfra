@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Temporary lint output
+lint_errors.txt
+lint_output.txt

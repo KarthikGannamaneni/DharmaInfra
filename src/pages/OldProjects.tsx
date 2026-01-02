@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion';
+import React from 'react';
 import { processedData as data } from '../utils/data';
 import ProjectCard from '../components/ProjectCard';
 import SectionHeader from '../components/SectionHeader';
 import ui from '../config/ui';
 
-const OldProjects = () => {
+const OldProjects: React.FC = () => {
     const { projects } = data;
 
     const ongoingProjects = projects.filter(p => p.status === 'Ongoing');

@@ -6,13 +6,13 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { processedData as data } from '../utils/data';
 import { getAssetPath } from '../utils/paths';
-import ui from '../config/ui';
+import { Project } from '../types';
 
 // Fix Leaflet marker icon issue
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
-let DefaultIcon = L.icon({
+const DefaultIcon = L.icon({
     iconUrl: icon,
     shadowUrl: iconShadow,
     iconSize: [25, 41],
@@ -23,7 +23,7 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 // Custom Marker Icon for Active/Hover State
-const createCustomIcon = (isActive) => L.divIcon({
+const createCustomIcon = (isActive: boolean) => L.divIcon({
     className: 'custom-marker',
     html: `<div style="
         background-color: ${isActive ? '#FFD700' : '#2c3e50'};
@@ -51,7 +51,12 @@ const createCustomIcon = (isActive) => L.divIcon({
 });
 
 // Helper to control map view programmatically
-const MapController = ({ center, bounds }) => {
+interface MapControllerProps {
+    center: L.LatLngExpression;
+    bounds: L.LatLngBoundsExpression | null;
+}
+
+const MapController: React.FC<MapControllerProps> = ({ center, bounds }) => {
     const map = useMap();
     useEffect(() => {
         if (bounds) {
@@ -63,39 +68,42 @@ const MapController = ({ center, bounds }) => {
     return null;
 };
 
-const Experimentation = () => {
-    const [selectedProjectId, setSelectedProjectId] = useState(null);
-    const [hoveredProjectId, setHoveredProjectId] = useState(null);
-    const [mapCenter, setMapCenter] = useState([17.45, 78.45]);
-    const [mapBounds, setMapBounds] = useState(null);
+interface ProjectWithCoords extends Project {
+    coordinates: L.LatLngTuple;
+}
 
-    // Mock coordinates for projects
-    const projectCoordinates = {
-        'tara-sitara': [17.5414, 78.4694],
-        'rs-residences': [17.5284, 78.4215],
-        'vrindavan-a': [17.4866, 78.4244],
-        'vrindavan-b': [17.4866, 78.4245],
-        'silver-square': [17.5148, 78.4206],
-        'orchard': [17.4580, 78.3009],
-        'jewel-crest': [17.5148, 78.4174]
-    };
 
-    const projectsWithCoords = data.projects.map(p => ({
+// Mock coordinates for projects
+const projectCoordinates: Record<string, L.LatLngTuple> = {
+    'tara-sitara': [17.5414, 78.4694],
+    'rs-residences': [17.5284, 78.4215],
+    'vrindavan-a': [17.4866, 78.4244],
+    'vrindavan-b': [17.4866, 78.4245],
+    'silver-square': [17.5148, 78.4206],
+    'orchard': [17.4580, 78.3009],
+    'jewel-crest': [17.5148, 78.4174]
+};
+
+const Projects: React.FC = () => {
+
+    const projectsWithCoords: ProjectWithCoords[] = React.useMemo(() => data.projects.map(p => ({
         ...p,
         coordinates: projectCoordinates[p.id] || [17.3850, 78.4867]
-    }));
+    })), []);
 
-    useEffect(() => {
-        // Set specific map bounds to show all projects on load
+    const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
+    const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
+    const [mapCenter, setMapCenter] = useState<L.LatLngExpression>([17.45, 78.45]);
+    const [mapBounds, setMapBounds] = useState<L.LatLngBoundsExpression | null>(() => {
         if (projectsWithCoords.length > 0) {
-            const bounds = projectsWithCoords.map(p => p.coordinates);
-            setMapBounds(bounds);
+            return projectsWithCoords.map(p => p.coordinates);
         }
-    }, []); // Run only on mount
+        return null;
+    });
 
-    const handleProjectClick = (project) => {
+    const handleProjectClick = (project: ProjectWithCoords) => {
         setSelectedProjectId(project.id);
-        // Clear bounds to allow flyTo center to take precedence or ensuring we focus on one point
+        // Clear bounds to allow flyTo center to take precedence
         setMapBounds(null);
         setMapCenter(project.coordinates);
     };
@@ -115,8 +123,8 @@ const Experimentation = () => {
             // Using global background from body/index.css for consistency
         }}>
 
-            {/* Main Page Content Wrapper with padding for Navbar */}
-            <div style={{ paddingTop: '120px', paddingBottom: '48px', paddingLeft: '32px', paddingRight: '32px' }}>
+            {/* Main Page Content Wrapper */}
+            <div className="projects-page-wrapper">
                 <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
 
                     <header style={{ marginBottom: '32px' }}>
@@ -124,31 +132,10 @@ const Experimentation = () => {
                         <p style={{ color: '#718096', fontFamily: 'sans-serif' }}>Explore our signature developments.</p>
                     </header>
 
-                    {/* Split Layout Container */}
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: window.innerWidth < 768 ? 'column' : 'row',
-                        gap: '24px',
-                        height: '80vh',
-                        padding: '0',
-                        borderRadius: '12px',
-                        backgroundColor: 'transparent',
-                    }}>
+                    <div className="projects-layout">
 
-                        {/* LEFT CONTAINER (60%) - Scrollable */}
-                        <div
-                            style={{
-                                width: window.innerWidth < 768 ? '100%' : '60%',
-                                height: '100%',
-                                borderRadius: '12px',
-                                overflowY: 'auto',
-                                position: 'relative',
-                                scrollbarWidth: 'thin',
-                                paddingRight: '16px',
-                                // Subtle shadow for the container itself
-                                boxShadow: 'inset 0 0 20px rgba(0,0,0,0.02)'
-                            }}
-                        >
+                        {/* LEFT CONTAINER - Scrollable (List) */}
+                        <div className="projects-list-container">
                             {/* Inner Padding container */}
                             <div style={{ padding: '8px 4px' }}>
 
@@ -160,12 +147,9 @@ const Experimentation = () => {
                                             onClick={() => handleProjectClick(project)}
                                             onMouseEnter={() => setHoveredProjectId(project.id)}
                                             onMouseLeave={() => setHoveredProjectId(null)}
-                                            className="glass-card" // Using the class from index.css
+                                            className="glass-card project-card-wrapper" // Using the class from index.css
                                             style={{
                                                 cursor: 'pointer',
-                                                height: '240px',
-                                                // Removed hard border, relying on ambient shadow glow
-                                                border: '1px solid rgba(255,255,255,0.5)',
                                                 position: 'relative',
                                                 overflow: 'visible' // Allow glow to bleed out
                                             }}
@@ -196,17 +180,15 @@ const Experimentation = () => {
                                             )}
 
                                             {/* Glass Panel Content Wrapper */}
-                                            <div className="glass-panel" style={{
-                                                display: 'flex',
-                                                height: '100%',
-                                                borderRadius: '20px',
+                                            <div className="glass-panel project-card-content" style={{
                                                 overflow: 'hidden',
-                                                position: 'relative',
                                                 zIndex: 1,
                                                 background: 'rgba(255, 255, 255, 0.6)' // Slightly lighter backing for readability
                                             }}>
-                                                {/* Thumbnail (Left) */}
-                                                <div style={{ width: '40%', height: '100%', position: 'relative' }}>
+                                                {/* Thumbnail (Left/Top) */}
+                                                <div className="project-card-image" style={{
+                                                    position: 'relative'
+                                                }}>
                                                     <img
                                                         src={project.image || getAssetPath('/images/placeholder.png')}
                                                         alt={project.name}
@@ -229,8 +211,8 @@ const Experimentation = () => {
                                                     </div>
                                                 </div>
 
-                                                {/* Metadata (Right) */}
-                                                <div style={{ flex: 1, padding: '24px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                                                {/* Metadata (Right/Bottom) */}
+                                                <div className="project-card-details">
                                                     <div>
                                                         <h2 className="font-cinzel" style={{ fontSize: '1.75rem', color: '#1a202c', letterSpacing: '-0.02em' }}>
                                                             {project.name}
@@ -253,12 +235,13 @@ const Experimentation = () => {
 
                                                     <Link
                                                         to={`/projects/${project.id}`}
+                                                        className="view-details-btn" // We might want to add this class to index.css or keep inline dynamic if needed, but let's try a standard style first
                                                         style={{
                                                             alignSelf: 'flex-start',
                                                             marginTop: '16px',
                                                             fontSize: '0.875rem',
                                                             fontWeight: 600,
-                                                            color: '#4A4E51', // Accent color
+                                                            color: '#4A4E51',
                                                             background: 'transparent',
                                                             border: '1px solid #CBD5E0',
                                                             padding: '8px 16px',
@@ -269,14 +252,14 @@ const Experimentation = () => {
                                                             display: 'inline-block'
                                                         }}
                                                         onMouseEnter={(e) => {
-                                                            e.target.style.background = '#4A4E51';
-                                                            e.target.style.color = '#fff';
-                                                            e.target.style.borderColor = '#4A4E51';
+                                                            e.currentTarget.style.background = '#4A4E51';
+                                                            e.currentTarget.style.color = '#fff';
+                                                            e.currentTarget.style.borderColor = '#4A4E51';
                                                         }}
                                                         onMouseLeave={(e) => {
-                                                            e.target.style.background = 'transparent';
-                                                            e.target.style.color = '#4A4E51';
-                                                            e.target.style.borderColor = '#CBD5E0';
+                                                            e.currentTarget.style.background = 'transparent';
+                                                            e.currentTarget.style.color = '#4A4E51';
+                                                            e.currentTarget.style.borderColor = '#CBD5E0';
                                                         }}
                                                         onClick={(e) => e.stopPropagation()} // Prevent triggering the card click
                                                     >
@@ -292,16 +275,9 @@ const Experimentation = () => {
                             </div>
                         </div>
 
-                        {/* RIGHT CONTAINER (40%) - Map */}
-                        <div
-                            className="glass-card"
+                        {/* RIGHT CONTAINER - Map */}
+                        <div className="glass-card projects-map-container"
                             style={{
-                                width: window.innerWidth < 768 ? '100%' : '40%',
-                                height: '100%',
-                                borderRadius: '24px',
-                                overflow: 'hidden',
-                                position: 'relative',
-                                // Glass panel styling to match ProjectCard
                                 background: 'var(--glass-bg-gradient)',
                                 backdropFilter: 'blur(30px) saturate(200%)',
                                 WebkitBackdropFilter: 'blur(30px) saturate(200%)',
@@ -326,8 +302,8 @@ const Experimentation = () => {
                                 transition: 'transform 0.2s ease, background-color 0.2s',
                             }}
                                 onClick={handleGlobalView}
-                                onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
-                                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                             >
                                 <span style={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#4A4E51', textTransform: 'uppercase', letterSpacing: '0.05em', pointerEvents: 'none' }}>Global View</span>
                             </div>
@@ -382,4 +358,4 @@ const Experimentation = () => {
     );
 };
 
-export default Experimentation;
+export default Projects;

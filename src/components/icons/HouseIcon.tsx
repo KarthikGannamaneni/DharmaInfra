@@ -1,4 +1,13 @@
-const HouseIcon = ({ size = 24, strokeWidth = 3.5, className, style }) => (
+import React from 'react';
+
+interface HouseIconProps {
+    size?: number | string;
+    strokeWidth?: number | string;
+    className?: string;
+    style?: React.CSSProperties;
+}
+
+const HouseIcon: React.FC<HouseIconProps> = ({ size = 24, strokeWidth = 3.5, className, style }) => (
     <svg
         width={size}
         height={size}
