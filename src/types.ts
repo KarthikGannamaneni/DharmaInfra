@@ -13,6 +13,8 @@ export interface Project {
     gallery: string[];
     floorPlans: string[];
     description?: string;
+    facing?: string;
+    uds?: string;
 }
 
 export interface Leadership {

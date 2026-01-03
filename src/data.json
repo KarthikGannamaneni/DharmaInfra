@@ -38,7 +38,9 @@
             "floorPlans": [
                 "/project_assets/TARA & SITARA/DI_tara_sitara_B_0F.pdf",
                 "/project_assets/TARA & SITARA/DI_tara_sitara_B_TY.pdf"
-            ]
+            ],
+            "facing": "East",
+            "uds": "65 Sq.Yds"
         },
         {
             "id": "rs-residences",
@@ -55,7 +57,9 @@
             "gallery": [],
             "floorPlans": [
                 "/project_assets/RS RESIDENCES/REV _DHARMA INFRA _80X60 _ CENTER LINE AND FOOTINGS-Model (1).pdf"
-            ]
+            ],
+            "facing": "West",
+            "uds": "45 Sq.Yds"
         },
         {
             "id": "vrindavan-a",
@@ -85,7 +89,9 @@
                 "/project_assets/VRINDAVAN BLOCK A/DHARAM INFRA @ KUKATPALLT-EAST ROAD 765 SQ YDS-Model.pdf",
                 "/project_assets/VRINDAVAN BLOCK A/DHARAM INFRA @ KUKATPALLY-EAST ROAD 765 SQ YDS (1).pdf",
                 "/project_assets/VRINDAVAN BLOCK A/DHARAM INFRA @ KUKATPALLY-EAST ROAD 765 SQ YDS.pdf"
-            ]
+            ],
+            "facing": "North",
+            "uds": "50 Sq.Yds"
         },
         {
             "id": "vrindavan-b",
@@ -109,7 +115,9 @@
             ],
             "floorPlans": [
                 "/project_assets/VRINDAVAN BLOCK B/TYPICAL FLOOR PLAN- 435 SQ.YDS.pdf"
-            ]
+            ],
+            "facing": "East",
+            "uds": "40 Sq.Yds"
         },
         {
             "id": "silver-square",
@@ -137,7 +145,9 @@
             ],
             "floorPlans": [
                 "/project_assets/SILVER SQUARE/DHARMA INFRA _ GAJULARAMARAM-Model.pdf"
-            ]
+            ],
+            "facing": "South",
+            "uds": "55 Sq.Yds"
         },
         {
             "id": "orchard",
@@ -166,7 +176,9 @@
             ],
             "floorPlans": [
                 "/project_assets/THE ORCHARD/DHARMA INFRA @ NALLAGANDLA-Model-01.pdf"
-            ]
+            ],
+            "facing": "East",
+            "uds": "60 Sq.Yds"
         },
         {
             "id": "jewel-crest",
@@ -195,7 +207,9 @@
             "floorPlans": [
                 "/project_assets/JEWEL CREST/TYPICAL FLOOR PLAN--RD (1).pdf",
                 "/project_assets/JEWEL CREST/TYPICAL FLOOR PLAN--RD.pdf"
-            ]
+            ],
+            "facing": "West",
+            "uds": "70 Sq.Yds"
         }
     ]
 }

@@ -27,9 +27,6 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
                 <p style={{ color: 'var(--color-accent)', marginBottom: '2rem' }}>Every home has a story. Let’s build yours.</p>
-                <p style={{ fontSize: '0.875rem', color: 'var(--color-accent-light)' }}>
-                    &copy; {currentYear} Dharma Infra. All rights reserved.
-                </p>
             </div>
         </footer>
     );

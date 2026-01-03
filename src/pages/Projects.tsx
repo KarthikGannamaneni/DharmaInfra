@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { processedData as data } from '../utils/data';
@@ -23,10 +23,10 @@ const DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 // Custom Marker Icon for Active/Hover State
-const createCustomIcon = (isActive: boolean) => L.divIcon({
+const createCustomIcon = (isActive: boolean, color: string) => L.divIcon({
     className: 'custom-marker',
     html: `<div style="
-        background-color: ${isActive ? '#FFD700' : '#2c3e50'};
+        background-color: ${isActive ? color : '#2c3e50'};
         width: 30px;
         height: 30px;
         border-radius: 50% 50% 50% 0;
@@ -73,7 +73,7 @@ interface ProjectWithCoords extends Project {
 }
 
 
-// Mock coordinates for projects
+// Mock coordinates and themes for projects
 const projectCoordinates: Record<string, L.LatLngTuple> = {
     'tara-sitara': [17.5414, 78.4694],
     'rs-residences': [17.5284, 78.4215],
@@ -84,8 +84,45 @@ const projectCoordinates: Record<string, L.LatLngTuple> = {
     'jewel-crest': [17.5148, 78.4174]
 };
 
-const Projects: React.FC = () => {
+// Define Project Themes
+const projectThemes: Record<string, { primary: string; glassGradient: string }> = {
+    'tara-sitara': {
+        primary: '#D4AF37', // Gold
+        glassGradient: 'linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
+    },
+    'rs-residences': {
+        primary: '#2c3e50', // Dark Blue
+        glassGradient: 'linear-gradient(135deg, rgba(44, 62, 80, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
+    },
+    'vrindavan-a': {
+        primary: '#2E8B57', // Sea Green
+        glassGradient: 'linear-gradient(135deg, rgba(46, 139, 87, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
+    },
+    'vrindavan-b': {
+        primary: '#2E8B57', // Sea Green
+        glassGradient: 'linear-gradient(135deg, rgba(46, 139, 87, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
+    },
+    'silver-square': {
+        primary: '#718096', // Silver/Gray
+        glassGradient: 'linear-gradient(135deg, rgba(113, 128, 150, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
+    },
+    'orchard': {
+        primary: '#48BB78', // Orchard Green
+        glassGradient: 'linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
+    },
+    'jewel-crest': {
+        primary: '#9F7AEA', // Purple/Royal
+        glassGradient: 'linear-gradient(135deg, rgba(159, 122, 234, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
+    }
+};
 
+const defaultTheme = {
+    primary: '#4A4E51',
+    glassGradient: 'linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.95) 100%)'
+};
+
+const Projects: React.FC = () => {
+    const navigate = useNavigate();
     const projectsWithCoords: ProjectWithCoords[] = React.useMemo(() => data.projects.map(p => ({
         ...p,
         coordinates: projectCoordinates[p.id] || [17.3850, 78.4867]
@@ -102,10 +139,16 @@ const Projects: React.FC = () => {
     });
 
     const handleProjectClick = (project: ProjectWithCoords) => {
-        setSelectedProjectId(project.id);
-        // Clear bounds to allow flyTo center to take precedence
-        setMapBounds(null);
-        setMapCenter(project.coordinates);
+        if (selectedProjectId === project.id) {
+            // If already selected, navigate to detail page
+            navigate(`/projects/${project.id}`);
+        } else {
+            // First click: Select project
+            setSelectedProjectId(project.id);
+            // Clear bounds to allow flyTo center to take precedence
+            setMapBounds(null);
+            setMapCenter(project.coordinates);
+        }
     };
 
     const handleGlobalView = () => {
@@ -120,7 +163,6 @@ const Projects: React.FC = () => {
         <div style={{
             minHeight: '100vh',
             position: 'relative',
-            // Using global background from body/index.css for consistency
         }}>
 
             {/* Main Page Content Wrapper */}
@@ -141,134 +183,170 @@ const Projects: React.FC = () => {
 
 
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                                    {projectsWithCoords.map((project) => (
-                                        <motion.div
-                                            key={project.id}
-                                            onClick={() => handleProjectClick(project)}
-                                            onMouseEnter={() => setHoveredProjectId(project.id)}
-                                            onMouseLeave={() => setHoveredProjectId(null)}
-                                            className="glass-card project-card-wrapper" // Using the class from index.css
-                                            style={{
-                                                cursor: 'pointer',
-                                                position: 'relative',
-                                                overflow: 'visible' // Allow glow to bleed out
-                                            }}
-                                            whileHover={{ scale: 1.02 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
-                                            {/* Ambient Shadow Layer - Dynamic Glow for Selected State */}
-                                            {project.image && (
-                                                <div
-                                                    style={{
-                                                        position: 'absolute',
-                                                        // Selected: Expand outwards (-5px). Default: Contract inwards (10px)
-                                                        inset: selectedProjectId === project.id ? '-5px' : '10px',
-                                                        backgroundImage: `url('${project.image}')`,
-                                                        backgroundSize: 'cover',
-                                                        backgroundPosition: 'center',
-                                                        // Selected: Sharp blur + High Saturation. Default: Soft blur
-                                                        filter: selectedProjectId === project.id
-                                                            ? 'blur(20px) saturate(150%)'
-                                                            : 'blur(30px) saturate(120%)',
-                                                        // Selected: High Opacity. Default: Low Opacity
-                                                        opacity: selectedProjectId === project.id ? 0.8 : 0.35,
-                                                        zIndex: 0,
-                                                        transform: 'translateY(10px)',
-                                                        transition: 'all 0.4s ease' // Smooth transition for the glow effect
-                                                    }}
-                                                />
-                                            )}
+                                    {projectsWithCoords.map((project) => {
+                                        const theme = projectThemes[project.id] || defaultTheme;
+                                        const isSelected = selectedProjectId === project.id;
+                                        const isHovered = hoveredProjectId === project.id;
 
-                                            {/* Glass Panel Content Wrapper */}
-                                            <div className="glass-panel project-card-content" style={{
-                                                overflow: 'hidden',
-                                                zIndex: 1,
-                                                background: 'rgba(255, 255, 255, 0.6)' // Slightly lighter backing for readability
-                                            }}>
-                                                {/* Thumbnail (Left/Top) */}
-                                                <div className="project-card-image" style={{
-                                                    position: 'relative'
-                                                }}>
-                                                    <img
-                                                        src={project.image || getAssetPath('/images/placeholder.png')}
-                                                        alt={project.name}
-                                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                        const isActive = isSelected || isHovered;
+
+                                        return (
+                                            <motion.div
+                                                key={project.id}
+                                                onClick={() => handleProjectClick(project)}
+                                                onMouseEnter={() => setHoveredProjectId(project.id)}
+                                                onMouseLeave={() => setHoveredProjectId(null)}
+                                                className="project-card-wrapper"
+                                                initial={false}
+                                                animate={{
+                                                    background: isActive ? theme.glassGradient : '#fff',
+                                                    backdropFilter: isActive ? 'blur(30px) saturate(120%)' : 'blur(0px)',
+                                                    WebkitBackdropFilter: isActive ? 'blur(30px) saturate(120%)' : 'blur(0px)',
+                                                    borderColor: isActive ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0,0,0,0.05)',
+                                                    boxShadow: isActive ? '0 10px 25px rgba(0, 0, 0, 0.08)' : '0 4px 6px rgba(0,0,0,0.02)',
+                                                    scale: isHovered ? 1.01 : 1
+                                                }}
+                                                style={{
+                                                    cursor: 'pointer',
+                                                    position: 'relative',
+                                                    overflow: 'visible',
+                                                    borderRadius: '24px',
+                                                    border: '1px solid rgba(0,0,0,0.05)',
+                                                    transition: 'all 0.4s ease'
+                                                }}
+                                            >
+                                                {/* Ambient Shadow Layer */}
+                                                {project.image && isSelected && (
+                                                    <div
+                                                        style={{
+                                                            position: 'absolute',
+                                                            inset: '-5px',
+                                                            backgroundImage: `url('${project.image}')`,
+                                                            backgroundSize: 'cover',
+                                                            backgroundPosition: 'center',
+                                                            filter: 'blur(20px) saturate(150%)',
+                                                            opacity: 0.2,
+                                                            zIndex: -1,
+                                                            transform: 'translateY(5px)',
+                                                            borderRadius: '24px',
+                                                            transition: 'opacity 0.4s ease'
+                                                        }}
                                                     />
-                                                    <div style={{ position: 'absolute', top: '12px', left: '12px' }}>
-                                                        <span style={{
-                                                            padding: '4px 12px',
-                                                            borderRadius: '9999px',
-                                                            fontSize: '10px',
-                                                            fontWeight: 'bold',
-                                                            textTransform: 'uppercase',
-                                                            letterSpacing: '0.05em',
-                                                            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                                                            backgroundColor: project.status === 'Ongoing' ? '#F6E05E' : '#059669',
-                                                            color: project.status === 'Ongoing' ? '#000' : '#fff'
-                                                        }}>
-                                                            {project.status}
-                                                        </span>
-                                                    </div>
-                                                </div>
+                                                )}
 
-                                                {/* Metadata (Right/Bottom) */}
-                                                <div className="project-card-details">
-                                                    <div>
-                                                        <h2 className="font-cinzel" style={{ fontSize: '1.75rem', color: '#1a202c', letterSpacing: '-0.02em' }}>
-                                                            {project.name}
-                                                        </h2>
-                                                        <p style={{ fontSize: '0.9rem', color: '#718096', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                                            {project.location}
-                                                        </p>
-
-                                                        <div style={{ marginTop: '20px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                                                            <div>
-                                                                <p style={{ fontSize: '0.75rem', color: '#a0aec0', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Units</p>
-                                                                <p style={{ fontWeight: 600, color: '#4a5568', fontSize: '1.1rem' }}>{project.units}</p>
-                                                            </div>
-                                                            <div>
-                                                                <p style={{ fontSize: '0.75rem', color: '#a0aec0', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Area</p>
-                                                                <p style={{ fontWeight: 600, color: '#4a5568', fontSize: '1.1rem' }}>{project.size}</p>
-                                                            </div>
+                                                {/* Content Wrapper */}
+                                                <div className="project-card-content" style={{
+                                                    overflow: 'hidden',
+                                                    zIndex: 1,
+                                                    borderRadius: '24px',
+                                                    background: 'transparent'
+                                                }}>
+                                                    {/* Thumbnail */}
+                                                    <div className="project-card-image" style={{
+                                                        position: 'relative'
+                                                    }}>
+                                                        <img
+                                                            src={project.image || getAssetPath('/images/placeholder.png')}
+                                                            alt={project.name}
+                                                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                                        />
+                                                        <div style={{ position: 'absolute', top: '12px', left: '12px' }}>
+                                                            <span style={{
+                                                                padding: '4px 12px',
+                                                                borderRadius: '9999px',
+                                                                fontSize: '10px',
+                                                                fontWeight: 'bold',
+                                                                textTransform: 'uppercase',
+                                                                letterSpacing: '0.05em',
+                                                                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                                                                backgroundColor: project.status === 'Ongoing' ? '#F6E05E' : '#059669',
+                                                                color: project.status === 'Ongoing' ? '#000' : '#fff'
+                                                            }}>
+                                                                {project.status}
+                                                            </span>
                                                         </div>
                                                     </div>
 
-                                                    <Link
-                                                        to={`/projects/${project.id}`}
-                                                        className="view-details-btn" // We might want to add this class to index.css or keep inline dynamic if needed, but let's try a standard style first
-                                                        style={{
-                                                            alignSelf: 'flex-start',
-                                                            marginTop: '16px',
-                                                            fontSize: '0.875rem',
-                                                            fontWeight: 600,
-                                                            color: '#4A4E51',
-                                                            background: 'transparent',
-                                                            border: '1px solid #CBD5E0',
-                                                            padding: '8px 16px',
-                                                            borderRadius: '20px',
-                                                            cursor: 'pointer',
-                                                            transition: 'all 0.3s ease',
-                                                            textDecoration: 'none',
-                                                            display: 'inline-block'
-                                                        }}
-                                                        onMouseEnter={(e) => {
-                                                            e.currentTarget.style.background = '#4A4E51';
-                                                            e.currentTarget.style.color = '#fff';
-                                                            e.currentTarget.style.borderColor = '#4A4E51';
-                                                        }}
-                                                        onMouseLeave={(e) => {
-                                                            e.currentTarget.style.background = 'transparent';
-                                                            e.currentTarget.style.color = '#4A4E51';
-                                                            e.currentTarget.style.borderColor = '#CBD5E0';
-                                                        }}
-                                                        onClick={(e) => e.stopPropagation()} // Prevent triggering the card click
-                                                    >
-                                                        View Details
-                                                    </Link>
+                                                    {/* Metadata */}
+                                                    <div className="project-card-details">
+                                                        <div>
+                                                            <h2 className="font-cinzel" style={{ fontSize: '1.75rem', color: '#1a202c', letterSpacing: '-0.02em' }}>
+                                                                {project.name}
+                                                            </h2>
+                                                            <p style={{ fontSize: '0.9rem', color: '#718096', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                                                {project.location}
+                                                            </p>
+
+                                                            <div style={{ marginTop: '20px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                                                <div>
+                                                                    <p style={{ fontSize: '0.75rem', color: '#a0aec0', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Units</p>
+                                                                    <p style={{ fontWeight: 600, color: '#4a5568', fontSize: '1.1rem' }}>{project.units}</p>
+                                                                </div>
+                                                                <div>
+                                                                    <p style={{ fontSize: '0.75rem', color: '#a0aec0', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Area</p>
+                                                                    <p style={{ fontWeight: 600, color: '#4a5568', fontSize: '1.1rem' }}>{project.size}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Action Button - Enhanced Contrast */}
+                                                        <Link
+                                                            to={`/projects/${project.id}`}
+                                                            className="view-details-btn"
+                                                            style={{
+                                                                alignSelf: 'flex-start',
+                                                                marginTop: '16px',
+                                                                fontSize: '0.875rem',
+                                                                fontWeight: 600,
+                                                                // IF ACTIVE: Solid White Background + Primary Color Text + Shadow
+                                                                // IF INACTIVE: Transparent Background + Gray Text + Border
+                                                                color: isActive ? theme.primary : '#4A4E51',
+                                                                background: isActive ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+                                                                border: isActive ? 'none' : '1px solid #CBD5E0',
+                                                                padding: '10px 20px', // Slightly larger hit area
+                                                                borderRadius: '30px',
+                                                                cursor: 'pointer',
+                                                                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                                                                display: 'inline-block',
+                                                                textDecoration: 'none',
+                                                                boxShadow: isActive ? '0 4px 12px rgba(0,0,0,0.1)' : 'none',
+                                                                transform: isActive ? 'translateY(0)' : 'none'
+                                                            }}
+                                                            // Inline hover override need to be careful not to break the active logic
+                                                            // We will simplify: On Hover of BUTTON itself, it just gets slightly more contrast/interactions
+                                                            onMouseEnter={(e) => {
+                                                                if (!isActive) {
+                                                                    e.currentTarget.style.background = '#4A4E51';
+                                                                    e.currentTarget.style.color = '#fff';
+                                                                    e.currentTarget.style.borderColor = '#4A4E51';
+                                                                } else {
+                                                                    e.currentTarget.style.transform = 'scale(1.05)';
+                                                                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.15)';
+                                                                }
+                                                            }}
+                                                            onMouseLeave={(e) => {
+                                                                // Reset to based on isActive state
+                                                                if (!isActive) {
+                                                                    e.currentTarget.style.background = 'transparent';
+                                                                    e.currentTarget.style.color = '#4A4E51';
+                                                                    e.currentTarget.style.borderColor = '#CBD5E0';
+                                                                } else {
+                                                                    e.currentTarget.style.transform = 'scale(1)';
+                                                                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                                                                    // Ensure colors stay correct (safety)
+                                                                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.95)';
+                                                                    e.currentTarget.style.color = theme.primary;
+                                                                }
+                                                            }}
+                                                            onClick={(e) => e.stopPropagation()}
+                                                        >
+                                                            View Details
+                                                        </Link>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </motion.div>
-                                    ))}
+                                            </motion.div>
+                                        );
+                                    })}
 
 
                                 </div>
@@ -324,12 +402,13 @@ const Projects: React.FC = () => {
                                     const isActive = selectedProjectId === project.id;
                                     const isHovered = hoveredProjectId === project.id;
                                     const isHighlighted = isActive || isHovered;
+                                    const theme = projectThemes[project.id] || defaultTheme;
 
                                     return (
                                         <Marker
                                             key={project.id}
                                             position={project.coordinates}
-                                            icon={createCustomIcon(isHighlighted)}
+                                            icon={createCustomIcon(isHighlighted, theme.primary)}
                                             eventHandlers={{
                                                 click: () => handleProjectClick(project),
                                             }}

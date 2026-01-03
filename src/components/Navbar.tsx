@@ -12,6 +12,7 @@ const Navbar: React.FC = () => {
     ];
 
     const isHome = location.pathname === '/';
+    const isProjectDetail = location.pathname.startsWith('/projects/');
 
     return (
         <nav style={{
@@ -41,8 +42,8 @@ const Navbar: React.FC = () => {
                             to={link.path}
                             style={{
                                 color: location.pathname === link.path
-                                    ? (isHome ? '#fff' : 'var(--color-text)')
-                                    : (isHome ? 'rgba(255, 255, 255, 0.7)' : 'var(--color-accent-light)'),
+                                    ? ((isHome || isProjectDetail) ? '#fff' : 'var(--color-text)')
+                                    : ((isHome || isProjectDetail) ? 'rgba(255, 255, 255, 0.7)' : 'var(--color-accent-light)'),
                                 transition: 'color 0.3s ease',
                                 fontWeight: 500,
                                 display: 'flex',
@@ -61,7 +62,7 @@ const Navbar: React.FC = () => {
                                 layoutId="underline"
                                 style={{
                                     height: '1px',
-                                    backgroundColor: isHome ? '#fff' : 'var(--color-text)',
+                                    backgroundColor: (isHome || isProjectDetail) ? '#fff' : 'var(--color-text)',
                                     marginTop: '4px'
                                 }}
                             />

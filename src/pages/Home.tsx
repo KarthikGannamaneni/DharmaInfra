@@ -57,7 +57,7 @@ const Home: React.FC = () => {
                         }}>
                             {company.tagline}
                         </h1>
-                        <Link to="/portfolio" style={{ display: 'inline-block', marginBottom: '3rem' }}>
+                        <Link to="/projects" style={{ display: 'inline-block', marginBottom: '3rem' }}>
                             <Button>
                                 {ui.home.heroButton}
                             </Button>
