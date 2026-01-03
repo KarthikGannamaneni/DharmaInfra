@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Navbar from './Navbar';
-import FloatingNavbar from './FloatingNavbar';
+import Navbar from './Navbar.tsx';
+import FloatingNavbar from './FloatingNavbar.tsx';
 import Footer from './Footer';
 
 const Layout: React.FC = () => {

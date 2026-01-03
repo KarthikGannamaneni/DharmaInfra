@@ -139,7 +139,7 @@ const ProjectDetail: React.FC = () => {
         boxShadow: '0 15px 35px rgba(0, 0, 0, 0.1)',
         border: '1px solid rgba(255, 255, 255, 0.6)',
         scale: 1.02,
-        transition: { duration: 0.4, ease: "easeOut" }
+        transition: { duration: 0.4, ease: "easeOut" as const }
     };
 
     if (!project) {
@@ -269,8 +269,6 @@ const ProjectDetail: React.FC = () => {
                                 {[
                                     { k: ui.common.units, v: project.units },
                                     { k: ui.common.architect, v: project.architect },
-                                    { k: ui.common.startDate, v: project.startDate },
-                                    { k: ui.common.handover, v: project.handover },
                                 ].map((row, i) => (
                                     <tr key={i} style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
                                         <td style={{ padding: '1rem 0', color: '#555' }}>{row.k}</td>
