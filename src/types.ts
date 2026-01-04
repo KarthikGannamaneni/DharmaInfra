@@ -15,6 +15,17 @@ export interface Project {
     description?: string;
     facing?: string;
     uds?: string;
+    flatSize?: string;
+    distances?: { location: string; distance: string }[];
+    specifications?: ProjectSpecification[];
+    hiddenSpecifications?: string[];
+    configuration?: string;
+    hasGenerator?: boolean;
+}
+
+export interface ProjectSpecification {
+    category: string;
+    details: string;
 }
 
 export interface Leadership {
@@ -35,4 +46,5 @@ export interface Company {
 export interface AppData {
     company: Company;
     projects: Project[];
+    specifications: ProjectSpecification[];
 }

@@ -6,7 +6,7 @@ import HouseIcon from './icons/HouseIcon';
 const Navbar: React.FC = () => {
     const location = useLocation();
     const navItems = [
-        { name: 'About Us', path: '/leadership' },
+        { name: 'About Us', path: '/about-us' },
         { name: 'Home', path: '/' },
         { name: 'Projects', path: '/projects' }
     ];

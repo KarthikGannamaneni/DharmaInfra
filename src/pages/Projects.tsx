@@ -3,10 +3,13 @@ import { motion } from 'framer-motion';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { Link, useNavigate } from 'react-router-dom';
 import 'leaflet/dist/leaflet.css';
+import { BedDouble as IconBed, Ruler as IconRuler, Maximize as IconMaximize } from 'lucide-react';
 import L from 'leaflet';
 import { processedData as data } from '../utils/data';
 import { getAssetPath } from '../utils/paths';
 import { Project } from '../types';
+import { projectThemes, defaultTheme } from '../utils/theme';
+import { hexToRgba } from '../utils/colors';
 
 // Fix Leaflet marker icon issue
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -60,7 +63,7 @@ const MapController: React.FC<MapControllerProps> = ({ center, bounds }) => {
     const map = useMap();
     useEffect(() => {
         if (bounds) {
-            map.flyToBounds(bounds, { padding: [50, 50], duration: 1.5 });
+            map.flyToBounds(bounds, { padding: [20, 20], duration: 1.5 });
         } else if (center) {
             map.flyTo(center, 15, { duration: 1.5, easeLinearity: 0.25 });
         }
@@ -74,6 +77,8 @@ interface ProjectWithCoords extends Project {
 
 
 // Mock coordinates and themes for projects
+
+// Mock coordinates and themes for projects
 const projectCoordinates: Record<string, L.LatLngTuple> = {
     'tara-sitara': [17.5414, 78.4694],
     'rs-residences': [17.5284, 78.4215],
@@ -82,43 +87,6 @@ const projectCoordinates: Record<string, L.LatLngTuple> = {
     'silver-square': [17.5148, 78.4206],
     'orchard': [17.4580, 78.3009],
     'jewel-crest': [17.5148, 78.4174]
-};
-
-// Define Project Themes
-const projectThemes: Record<string, { primary: string; glassGradient: string }> = {
-    'tara-sitara': {
-        primary: '#D4AF37', // Gold
-        glassGradient: 'linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
-    },
-    'rs-residences': {
-        primary: '#2c3e50', // Dark Blue
-        glassGradient: 'linear-gradient(135deg, rgba(44, 62, 80, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
-    },
-    'vrindavan-a': {
-        primary: '#2E8B57', // Sea Green
-        glassGradient: 'linear-gradient(135deg, rgba(46, 139, 87, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
-    },
-    'vrindavan-b': {
-        primary: '#2E8B57', // Sea Green
-        glassGradient: 'linear-gradient(135deg, rgba(46, 139, 87, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
-    },
-    'silver-square': {
-        primary: '#718096', // Silver/Gray
-        glassGradient: 'linear-gradient(135deg, rgba(113, 128, 150, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
-    },
-    'orchard': {
-        primary: '#48BB78', // Orchard Green
-        glassGradient: 'linear-gradient(135deg, rgba(72, 187, 120, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
-    },
-    'jewel-crest': {
-        primary: '#9F7AEA', // Purple/Royal
-        glassGradient: 'linear-gradient(135deg, rgba(159, 122, 234, 0.1) 0%, rgba(255, 255, 255, 0.9) 60%, rgba(255, 255, 255, 0.95) 100%)'
-    }
-};
-
-const defaultTheme = {
-    primary: '#4A4E51',
-    glassGradient: 'linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.95) 100%)'
 };
 
 const Projects: React.FC = () => {
@@ -167,7 +135,7 @@ const Projects: React.FC = () => {
 
             {/* Main Page Content Wrapper */}
             <div className="projects-page-wrapper">
-                <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+                <div style={{ maxWidth: '1800px', margin: '0 auto' }}>
 
                     <header style={{ marginBottom: '32px' }}>
                         <h1 className="font-cinzel" style={{ fontSize: '2.5rem', color: '#1a202c', marginBottom: '8px' }}>Projects</h1>
@@ -201,7 +169,6 @@ const Projects: React.FC = () => {
                                                 animate={{
                                                     background: isActive ? theme.glassGradient : '#fff',
                                                     backdropFilter: isActive ? 'blur(30px) saturate(120%)' : 'blur(0px)',
-                                                    WebkitBackdropFilter: isActive ? 'blur(30px) saturate(120%)' : 'blur(0px)',
                                                     borderColor: isActive ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0,0,0,0.05)',
                                                     boxShadow: isActive ? '0 10px 25px rgba(0, 0, 0, 0.08)' : '0 4px 6px rgba(0,0,0,0.02)',
                                                     scale: isHovered ? 1.01 : 1
@@ -270,78 +237,79 @@ const Projects: React.FC = () => {
                                                     {/* Metadata */}
                                                     <div className="project-card-details">
                                                         <div>
-                                                            <h2 className="font-cinzel" style={{ fontSize: '1.75rem', color: '#1a202c', letterSpacing: '-0.02em' }}>
-                                                                {project.name}
-                                                            </h2>
-                                                            <p style={{ fontSize: '0.9rem', color: '#718096', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                                                {project.location}
-                                                            </p>
-
-                                                            <div style={{ marginTop: '20px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                                                                 <div>
-                                                                    <p style={{ fontSize: '0.75rem', color: '#a0aec0', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Units</p>
-                                                                    <p style={{ fontWeight: 600, color: '#4a5568', fontSize: '1.1rem' }}>{project.units}</p>
+                                                                    <h2 className="font-cinzel" style={{ fontSize: '1.5rem', color: '#1a202c', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                                                                        {project.name}
+                                                                    </h2>
+                                                                    <p style={{ fontSize: '0.85rem', color: '#718096', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                                                        {project.location}
+                                                                    </p>
                                                                 </div>
-                                                                <div>
-                                                                    <p style={{ fontSize: '0.75rem', color: '#a0aec0', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Area</p>
-                                                                    <p style={{ fontWeight: 600, color: '#4a5568', fontSize: '1.1rem' }}>{project.size}</p>
-                                                                </div>
+                                                                {/* Status Badge moved here for better layout balance if needed, or keep on image. Keeping on image for now. */}
                                                             </div>
+
+                                                            {/* Horizontal Stats Row - Reference Style */}
+                                                            <div style={{
+                                                                marginTop: '24px',
+                                                                display: 'flex',
+                                                                flexDirection: 'row',
+                                                                alignItems: 'center',
+                                                                flexWrap: 'wrap', // Allow wrap on very small screens
+                                                                gap: '24px',
+                                                            }}>
+                                                                {/* Size */}
+                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                                    <IconRuler size={20} strokeWidth={1.5} color="#4A5568" />
+                                                                    <div>
+                                                                        <p style={{ fontSize: '0.7rem', color: '#718096', textTransform: 'uppercase', fontWeight: 600 }}>Area</p>
+                                                                        <p style={{ fontWeight: 500, color: '#2D3748', fontSize: '0.9rem' }}>{project.flatSize || 'TBA'}</p>
+                                                                    </div>
+                                                                </div>
+
+                                                                {/* Configuration */}
+                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                                    <IconBed size={20} strokeWidth={1.5} color="#4A5568" />
+                                                                    <div>
+                                                                        <p style={{ fontSize: '0.7rem', color: '#718096', textTransform: 'uppercase', fontWeight: 600 }}>Type</p>
+                                                                        <p style={{ fontWeight: 500, color: '#2D3748', fontSize: '0.9rem' }}>{project.configuration || '2 & 3 BHK'}</p>
+                                                                    </div>
+                                                                </div>
+                                                                {/* Plot Size */}
+                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                                    <IconMaximize size={20} strokeWidth={1.5} color="#4A5568" />
+                                                                    <div>
+                                                                        <p style={{ fontSize: '0.7rem', color: '#718096', textTransform: 'uppercase', fontWeight: 600 }}>Plot</p>
+                                                                        <p style={{ fontWeight: 500, color: '#2D3748', fontSize: '0.9rem' }}>{project.size}</p>
+                                                                    </div>
+                                                                </div></div>
                                                         </div>
 
-                                                        {/* Action Button - Enhanced Contrast */}
-                                                        <Link
-                                                            to={`/projects/${project.id}`}
-                                                            className="view-details-btn"
-                                                            style={{
-                                                                alignSelf: 'flex-start',
-                                                                marginTop: '16px',
-                                                                fontSize: '0.875rem',
-                                                                fontWeight: 600,
-                                                                // IF ACTIVE: Solid White Background + Primary Color Text + Shadow
-                                                                // IF INACTIVE: Transparent Background + Gray Text + Border
-                                                                color: isActive ? theme.primary : '#4A4E51',
-                                                                background: isActive ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
-                                                                border: isActive ? 'none' : '1px solid #CBD5E0',
-                                                                padding: '10px 20px', // Slightly larger hit area
-                                                                borderRadius: '30px',
-                                                                cursor: 'pointer',
-                                                                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                                                                display: 'inline-block',
-                                                                textDecoration: 'none',
-                                                                boxShadow: isActive ? '0 4px 12px rgba(0,0,0,0.1)' : 'none',
-                                                                transform: isActive ? 'translateY(0)' : 'none'
-                                                            }}
-                                                            // Inline hover override need to be careful not to break the active logic
-                                                            // We will simplify: On Hover of BUTTON itself, it just gets slightly more contrast/interactions
-                                                            onMouseEnter={(e) => {
-                                                                if (!isActive) {
-                                                                    e.currentTarget.style.background = '#4A4E51';
-                                                                    e.currentTarget.style.color = '#fff';
-                                                                    e.currentTarget.style.borderColor = '#4A4E51';
-                                                                } else {
-                                                                    e.currentTarget.style.transform = 'scale(1.05)';
-                                                                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.15)';
-                                                                }
-                                                            }}
-                                                            onMouseLeave={(e) => {
-                                                                // Reset to based on isActive state
-                                                                if (!isActive) {
-                                                                    e.currentTarget.style.background = 'transparent';
-                                                                    e.currentTarget.style.color = '#4A4E51';
-                                                                    e.currentTarget.style.borderColor = '#CBD5E0';
-                                                                } else {
-                                                                    e.currentTarget.style.transform = 'scale(1)';
-                                                                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
-                                                                    // Ensure colors stay correct (safety)
-                                                                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.95)';
-                                                                    e.currentTarget.style.color = theme.primary;
-                                                                }
-                                                            }}
-                                                            onClick={(e) => e.stopPropagation()}
-                                                        >
-                                                            View Details
-                                                        </Link>
+                                                        {/* Action Button - Full Width / Explicit */}
+                                                        <div style={{ marginTop: '24px', width: '100%' }}>
+                                                            <Link
+                                                                to={`/projects/${project.id}`}
+                                                                className="view-details-btn"
+                                                                style={{
+                                                                    display: 'block',
+                                                                    width: '100%',
+                                                                    textAlign: 'center',
+                                                                    padding: '12px 24px',
+                                                                    fontSize: '0.9rem',
+                                                                    fontWeight: 600,
+                                                                    color: theme.primary,
+                                                                    background: isActive ? hexToRgba(theme.primary, 0.12) : 'transparent',
+                                                                    border: `1px solid ${theme.primary}`,
+                                                                    borderRadius: '8px', // Slightly squared off like reference
+                                                                    cursor: 'pointer',
+                                                                    transition: 'all 0.2s ease',
+                                                                    textDecoration: 'none',
+                                                                }}
+                                                                onClick={(e) => e.stopPropagation()}
+                                                            >
+                                                                View Details
+                                                            </Link>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </motion.div>

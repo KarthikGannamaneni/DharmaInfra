@@ -1,115 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
     Compass,
     Ruler,
-    Layers,
     HardHat,
     Calendar,
     Flag,
     FileText,
     Download,
+    ArrowLeft,
+    Maximize,
+    HeartPulse,
+    Train,
+    ShoppingBag,
+    Building2,
     MapPin,
-    ArrowLeft
+    Plane,
+    School
 } from 'lucide-react';
 import { processedData as data } from '../utils/data';
 import ui from '../config/ui';
+import ImageCarousel from '../components/common/ImageCarousel';
+import { projectThemes, defaultTheme } from '../utils/theme';
+import { hexToRgba } from '../utils/colors';
 
-interface ImageCarouselProps {
-    images: string[];
-}
-
-const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        if (!images || images.length === 0) return;
-        const timer = setInterval(() => {
-            setIndex((prev) => (prev + 1) % images.length);
-        }, 2000); // Reduced to 2 seconds as requested
-        return () => clearInterval(timer);
-    }, [images]);
-
-    if (!images || images.length === 0) return null;
-
-    return (
-        <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden', backgroundColor: '#000' }}>
-            <AnimatePresence>
-                <motion.img
-                    key={index}
-                    src={images[index]}
-                    alt={`Gallery Image ${index + 1}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8 }}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
-                />
-            </AnimatePresence>
-
-            {/* Dots Indicator */}
-            <div style={{ position: 'absolute', bottom: '1rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '0.5rem', zIndex: 10 }}>
-                {images.map((_, i) => (
-                    <div
-                        key={i}
-                        style={{
-                            width: '8px',
-                            height: '8px',
-                            borderRadius: '50%',
-                            backgroundColor: i === index ? '#fff' : 'rgba(255,255,255,0.5)',
-                            transition: 'background-color 0.3s'
-                        }}
-                    />
-                ))}
-            </div>
-        </div>
-    );
+// Helper: Parse "X mins" to integer for sorting
+const parseDuration = (timeStr: string): number => {
+    const match = timeStr.match(/(\d+)/);
+    return match ? parseInt(match[1], 10) : 999;
 };
 
-// Define Project Themes
-const projectThemes: Record<string, { primary: string; secondary: string; glassGradient: string }> = {
-    'tara-sitara': {
-        primary: '#D4AF37', // Gold
-        secondary: '#f9f8f6',
-        glassGradient: 'linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 40%, rgba(255, 255, 255, 0.4) 100%)'
-    },
-    'rs-residences': {
-        primary: '#2c3e50', // Dark Blue
-        secondary: '#f0f4f8',
-        glassGradient: 'linear-gradient(135deg, rgba(44, 62, 80, 0.2) 0%, rgba(44, 62, 80, 0.1) 40%, rgba(255, 255, 255, 0.4) 100%)'
-    },
-    'vrindavan-a': {
-        primary: '#2E8B57', // Sea Green
-        secondary: '#f0f9f4',
-        glassGradient: 'linear-gradient(135deg, rgba(46, 139, 87, 0.2) 0%, rgba(46, 139, 87, 0.1) 40%, rgba(255, 255, 255, 0.4) 100%)'
-    },
-    'vrindavan-b': {
-        primary: '#2E8B57', // Sea Green
-        secondary: '#f0f9f4',
-        glassGradient: 'linear-gradient(135deg, rgba(46, 139, 87, 0.2) 0%, rgba(46, 139, 87, 0.1) 40%, rgba(255, 255, 255, 0.4) 100%)'
-    },
-    'silver-square': {
-        primary: '#718096', // Silver/Gray
-        secondary: '#f7fafc',
-        glassGradient: 'linear-gradient(135deg, rgba(113, 128, 150, 0.2) 0%, rgba(113, 128, 150, 0.1) 40%, rgba(255, 255, 255, 0.4) 100%)'
-    },
-    'orchard': {
-        primary: '#48BB78', // Orchard Green
-        secondary: '#f0fff4',
-        glassGradient: 'linear-gradient(135deg, rgba(72, 187, 120, 0.2) 0%, rgba(72, 187, 120, 0.1) 40%, rgba(255, 255, 255, 0.4) 100%)'
-    },
-    'jewel-crest': {
-        primary: '#9F7AEA', // Purple/Royal
-        secondary: '#faf5ff',
-        glassGradient: 'linear-gradient(135deg, rgba(159, 122, 234, 0.2) 0%, rgba(159, 122, 234, 0.1) 40%, rgba(255, 255, 255, 0.4) 100%)'
-    }
-};
-
-const defaultTheme = {
-    primary: '#4A4E51',
-    secondary: '#f8f9fa',
-    glassGradient: 'linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(255, 255, 255, 0.05) 100%)'
+// Helper: Get Icon based on location name
+const getIconForLocation = (location: string) => {
+    const lowerLoc = location.toLowerCase();
+    if (lowerLoc.includes('school') || lowerLoc.includes('college') || lowerLoc.includes('university')) return <School size={20} />;
+    if (lowerLoc.includes('hospital') || lowerLoc.includes('clinic') || lowerLoc.includes('medical')) return <HeartPulse size={20} />;
+    if (lowerLoc.includes('metro') || lowerLoc.includes('station') || lowerLoc.includes('train')) return <Train size={20} />;
+    if (lowerLoc.includes('airport')) return <Plane size={20} />;
+    if (lowerLoc.includes('mall') || lowerLoc.includes('shopping') || lowerLoc.includes('market')) return <ShoppingBag size={20} />;
+    if (lowerLoc.includes('park') || lowerLoc.includes('district') || lowerLoc.includes('office') || lowerLoc.includes('hitech')) return <Building2 size={20} />;
+    return <MapPin size={20} />;
 };
 
 interface ProjectDetailParams extends Record<string, string | undefined> {
@@ -152,7 +83,7 @@ const ProjectDetail: React.FC = () => {
     }
 
     return (
-        <div style={{ backgroundColor: theme.secondary, minHeight: '100vh', paddingBottom: '4rem', transition: 'background-color 0.5s ease' }}>
+        <div style={{ backgroundColor: 'var(--color-bg)', minHeight: '100vh', paddingBottom: '4rem', transition: 'background-color 0.5s ease' }}>
 
             {/* Back Button (Floating top left) */}
             <Link to="/projects" style={{
@@ -176,7 +107,7 @@ const ProjectDetail: React.FC = () => {
 
             {/* Hero Section with Carousel */}
             <div style={{ position: 'relative', height: '70vh', marginTop: '0' }}>
-                <ImageCarousel images={[project.image, ...(project.gallery || [])].filter(Boolean)} />
+                <ImageCarousel images={[project.image, ...(project.gallery || [])].filter(img => img && img.toLowerCase().includes('elevation'))} />
 
                 {/* Hero Overlay Gradient */}
                 <div style={{
@@ -229,8 +160,8 @@ const ProjectDetail: React.FC = () => {
                     }}>
                         {[
                             { label: 'Facing', value: project.facing || 'N/A', icon: <Compass size={24} strokeWidth={1.5} /> },
-                            { label: ui.common.plotSize, value: project.size, icon: <Ruler size={24} strokeWidth={1.5} /> },
-                            { label: 'UDS', value: project.uds || 'N/A', icon: <Layers size={24} strokeWidth={1.5} /> },
+                            { label: ui.common.plotSize, value: project.size, icon: <Maximize size={24} strokeWidth={1.5} /> },
+                            { label: 'Flat Size', value: project.flatSize || 'N/A', icon: <Ruler size={24} strokeWidth={1.5} /> },
                             { label: ui.common.status, value: project.status, icon: <HardHat size={24} strokeWidth={1.5} /> }
                         ].map((item, idx) => (
                             <div key={idx} style={{
@@ -269,6 +200,7 @@ const ProjectDetail: React.FC = () => {
                                 {[
                                     { k: ui.common.units, v: project.units },
                                     { k: ui.common.architect, v: project.architect },
+                                    { k: 'Power Backup', v: project.hasGenerator ? '100%' : 'N/A' },
                                 ].map((row, i) => (
                                     <tr key={i} style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
                                         <td style={{ padding: '1rem 0', color: '#555' }}>{row.k}</td>
@@ -310,35 +242,38 @@ const ProjectDetail: React.FC = () => {
                     >
                         <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', borderBottom: `2px solid ${theme.primary}`, paddingBottom: '0.5rem', display: 'inline-block', color: '#333' }}>Downloads</h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            {project.floorPlans && project.floorPlans.map((plan, i) => (
-                                <a
-                                    key={i}
-                                    href={plan}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '1rem',
-                                        padding: '1rem',
-                                        backgroundColor: 'rgba(255,255,255,0.5)', // Inner glass
-                                        borderRadius: '12px',
-                                        textDecoration: 'none',
-                                        color: '#333',
-                                        transition: 'background-color 0.2s',
-                                        border: '1px solid rgba(0,0,0,0.05)'
-                                    }}
-                                >
-                                    <FileText size={24} color="#666" />
-                                    <div>
-                                        <div style={{ fontWeight: 600 }}>Floor Plan {i + 1}</div>
-                                        <div style={{ fontSize: '0.8rem', color: '#666' }}>PDF Document</div>
-                                    </div>
-                                    <span style={{ marginLeft: 'auto', color: theme.primary }}>
-                                        <Download size={18} />
-                                    </span>
-                                </a>
-                            ))}
+                            {project.floorPlans && project.floorPlans.map((plan, i) => {
+                                const fileName = decodeURIComponent(plan.split('/').pop() || 'Document');
+                                return (
+                                    <a
+                                        key={i}
+                                        href={plan}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '1rem',
+                                            padding: '1rem',
+                                            backgroundColor: 'rgba(255,255,255,0.5)', // Inner glass
+                                            borderRadius: '12px',
+                                            textDecoration: 'none',
+                                            color: '#333',
+                                            transition: 'background-color 0.2s',
+                                            border: '1px solid rgba(0,0,0,0.05)'
+                                        }}
+                                    >
+                                        <FileText size={24} color="#666" />
+                                        <div>
+                                            <div style={{ fontWeight: 600 }}>{fileName}</div>
+                                            <div style={{ fontSize: '0.8rem', color: '#666' }}>PDF Document</div>
+                                        </div>
+                                        <span style={{ marginLeft: 'auto', color: theme.primary }}>
+                                            <Download size={18} />
+                                        </span>
+                                    </a>
+                                )
+                            })}
                             {(!project.floorPlans || project.floorPlans.length === 0) && (
                                 <p style={{ color: '#888', fontStyle: 'italic' }}>No technical documents available.</p>
                             )}
@@ -347,59 +282,129 @@ const ProjectDetail: React.FC = () => {
                 </div>
             </div>
 
-            {/* Map Section - Full Width */}
-            {project.locationMap && (
+            {/* Map and Distance Matrix Section */}
+            {(project.locationMap || (project.distances && project.distances.length > 0)) && (
                 <div className="container" style={{ marginBottom: '4rem' }}>
-                    <motion.div
-                        style={{
-                            width: '100%',
-                            height: '500px',
-                            position: 'relative',
-                            ...cardBaseStyle,
-                            padding: '1rem',
-                            overflow: 'hidden'
-                        }}
-                        whileHover={cardHoverVariant}
-                    >
-                        <iframe
-                            src={project.locationMap}
-                            width="100%"
-                            height="100%"
-                            style={{ border: 0, borderRadius: '16px' }}
-                            allowFullScreen={true}
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            title={`${project.name} Location`}
-                        ></iframe>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+                        gap: '2rem',
+                        alignItems: 'stretch'
+                    }}>
+                        {/* Map - Left Side */}
+                        {project.locationMap && (
+                            <motion.div
+                                style={{
+                                    width: '100%',
+                                    minHeight: '350px',
+                                    height: '100%',
+                                    position: 'relative',
+                                    ...cardBaseStyle,
+                                    padding: '0.5rem',
+                                    overflow: 'hidden'
+                                }}
+                                whileHover={cardHoverVariant}
+                            >
+                                <iframe
+                                    src={project.locationMap}
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0, borderRadius: '20px', display: 'block' }}
+                                    allowFullScreen={true}
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title={`${project.name} Location`}
+                                ></iframe>
+                            </motion.div>
+                        )}
 
-                        {/* Get Directions Button Overlay */}
-                        <a
-                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(project.location)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{
-                                position: 'absolute',
-                                bottom: '2rem',
-                                right: '2rem',
-                                backgroundColor: theme.primary,
-                                color: '#fff',
-                                padding: '0.75rem 1.5rem',
-                                borderRadius: '30px',
-                                textDecoration: 'none',
-                                fontWeight: 600,
-                                boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.5rem',
-                                fontSize: '1rem'
-                            }}
-                        >
-                            <MapPin size={18} /> <span>Get Directions</span>
-                        </a>
-                    </motion.div>
+                        {/* Distance Matrix - Right Side */}
+                        {project.distances && project.distances.length > 0 && (
+                            <motion.div
+                                style={{
+                                    ...cardBaseStyle,
+                                    height: '100%'
+                                }}
+                                whileHover={cardHoverVariant}
+                            >
+                                <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', borderBottom: `2px solid ${theme.primary}`, paddingBottom: '0.5rem', display: 'inline-block', color: '#333' }}>Location Highlights</h3>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                    {[...project.distances]
+                                        .sort((a: any, b: any) => parseDuration(a.distance) - parseDuration(b.distance))
+                                        .map((item: any, idx: number) => (
+                                            <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', backgroundColor: '#f8f9fa', borderRadius: '12px' }}>
+                                                <div style={{
+                                                    width: '40px', height: '40px', borderRadius: '50%', backgroundColor: hexToRgba(theme.primary, 0.15), color: theme.primary,
+                                                    display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0
+                                                }}>
+                                                    {getIconForLocation(item.location)}
+                                                </div>
+                                                <div style={{ flex: 1 }}>
+                                                    <div style={{ fontWeight: 600, color: '#333' }}>{item.location}</div>
+                                                </div>
+                                                <div style={{ fontSize: '0.9rem', color: '#666', fontWeight: 600 }}>{item.distance}</div>
+                                            </div>
+                                        ))}
+                                </div>
+                            </motion.div>
+                        )}
+                    </div>
                 </div>
             )}
-        </div>
+            {/* Specifications Section */}
+            {(() => {
+                const globalSpecs = data.specifications || [];
+                const projectSpecs = project.specifications || [];
+                const hiddenSpecs = project.hiddenSpecifications || [];
+
+                // 1. Merge global with overrides
+                let finalSpecs = globalSpecs.map(gs => {
+                    const override = projectSpecs.find(ps => ps.category === gs.category);
+                    return override || gs;
+                });
+
+                // 2. Append strictly new categories from project
+                const newSpecs = projectSpecs.filter(ps => !globalSpecs.some(gs => gs.category === ps.category));
+                finalSpecs = [...finalSpecs, ...newSpecs];
+
+                // 3. Filter out hidden specifications
+                finalSpecs = finalSpecs.filter(s => !hiddenSpecs.includes(s.category));
+
+                if (finalSpecs.length === 0) return null;
+
+                return (
+                    <div className="container" style={{ marginBottom: '4rem' }}>
+                        <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', borderBottom: `2px solid ${theme.primary}`, paddingBottom: '0.5rem', display: 'inline-block', color: '#333' }}>Specifications</h3>
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+                            gap: '1.5rem',
+                            alignItems: 'start'
+                        }}>
+                            {finalSpecs.map((spec, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    style={{
+                                        ...cardBaseStyle,
+                                        padding: '1.5rem',
+                                        height: '100%'
+                                    }}
+                                    whileHover={cardHoverVariant}
+                                >
+                                    <h4 style={{ fontSize: '1rem', fontWeight: 600, color: theme.primary, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                        <div style={{ width: '8px', height: '8px', backgroundColor: theme.primary, borderRadius: '50%' }}></div>
+                                        {spec.category}
+                                    </h4>
+                                    <p style={{ fontSize: '0.95rem', color: '#555', lineHeight: '1.6', margin: 0 }}>
+                                        {spec.details}
+                                    </p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                );
+            })()}
+        </div >
     );
 };
 

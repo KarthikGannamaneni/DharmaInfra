@@ -221,8 +221,8 @@ h2 {
 
 @media (min-width: 768px) {
   .projects-page-wrapper {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 
@@ -288,6 +288,7 @@ h2 {
     flex-direction: row;
     /* Side by side */
     height: 80vh;
+    gap: 2px;
     /* Fixed height for dashboard feel */
   }
 
@@ -295,7 +296,6 @@ h2 {
     width: 60%;
     height: 100%;
     overflow-y: auto;
-    padding-right: 16px;
     padding-right: 16px;
     /* Custom Scrollbar for list - Liquid Glass */
     scrollbar-width: auto;
