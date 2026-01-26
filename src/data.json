@@ -29,7 +29,7 @@
             "handover": "Feb 2027",
             "units": 25,
             "size": "1240yds",
-            "flatSize": "1145 - 1650 Sft",
+            "flatSize": "1160 - 1550 Sft",
             "configuration": "2 & 3 BHK",
             "hasGenerator": true,
             "architect": "Fluid Architects",
@@ -42,7 +42,7 @@
                 "/project_assets/TARA & SITARA/Floor Plan.pdf",
                 "/project_assets/TARA & SITARA/Parking Plan.pdf"
             ],
-            "facing": "East",
+            "facing": "East, West, North",
             "uds": "65 Sq.Yds",
             "distances": [
                 {
@@ -61,6 +61,72 @@
                     "location": "ORR exit",
                     "distance": "20 mins"
                 }
+            ],
+            "specifications": [
+                {
+                    "category": "Structure",
+                    "details": "The building is designed with a robust Reinforced Cement Concrete (RCC) framed structural system, ensuring strength, stability, and durability."
+                },
+                {
+                    "category": "Superstructure",
+                    "details": "Red brick masonry work executed using high-quality bricks laid in cement mortar, ensuring strength and durability."
+                },
+                {
+                    "category": "Plastering",
+                    "details": "Internal walls are finished with two coats of smooth plastering, while external surfaces receive two coats of plastering with waterproof cement compounds to enhance durability and weather resistance."
+                },
+                {
+                    "category": "Windows",
+                    "details": "uPVC sliding window shutters are provided with mosquito mesh, a three-track system for smooth operation, and a painted MS safety grill fabricated from 10 mm square rods."
+                },
+                {
+                    "category": "Internal Doors",
+                    "details": "Doors are provided with African teakwood door frames of 4” × 3” section, fitted with 32 mm thick waterproof flush shutters finished with laminate on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Flooring",
+                    "details": "vitrified tiles of size 600 mm × 1200 mm are provided for the hall, bedrooms, dining area, kitchen, and balcony, offering a premium finish and uniform appearance. Anti-skid tiles are used in all toilets to ensure enhanced safety and slip resistance."
+                },
+                {
+                    "category": "Kitchen",
+                    "details": "The kitchen is finished with a Khammam Black granite countertop, fitted with a stainless steel sink, and complemented by a wall tile dado up to 3 feet height above the countertop for durability, hygiene, and ease of maintenance."
+                },
+                {
+                    "category": "Plumbing",
+                    "details": "All water pipelines with CPVC pipes, Truflo CPVC pipes for waste water and jaguar or Hindware Fittings. Diverters with faucets in the bathrooms."
+                },
+                {
+                    "category": "Main Door",
+                    "details": "This door system is constructed using African teakwood door frames with a finished section size of 5” × 3”, offering excellent strength, durability, and resistance to moisture and termites. fitted with 35 mm thick waterproof flush shutters finished with Teakwood veneer  on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Painting",
+                    "details": "Internal walls are finished with Berger Paints Premier Emulsion over a smooth  White wall putty base, providing a refined and durable finish. The building elevation features texture paint for enhanced aesthetics, while all other exterior walls are coated with Berger Rain Guard, ensuring superior protection against weather and moisture."
+                },
+                {
+                    "category": "Sanitary",
+                    "details": "Sanitary fittings of Jaquar or Hindware make are provided, including water closets (WC) for all toilets and a wash basin in the dining area."
+                },
+                {
+                    "category": "Electrical",
+                    "details": "Concealed PVC conduit wiring is provided using copper cables of Goldmedal Electricals make, along with Anchor modular switches and MCBs for enhanced safety and reliability. Adequate air-conditioner points are provided in all bedrooms, with geyser provisions in toilets. The kitchen is equipped with 15-amp power sockets for chimney, microwave oven, mixer grinder, and refrigerator. Provision is also made for lights, fans, calling bell, TV, telephone, internet, and intercom facilities, ensuring complete electrical convenience throughout the residence."
+                },
+                {
+                    "category": "Common Extras",
+                    "details": "Escorts sound proofing generator, transformer, 3- phase power connection panel board, drainage and car parking area. Solar fencing system all around the compound wall. Railing at balconies and stair cases. Granite flooring in corridors and staircase."
+                },
+                {
+                    "category": "Toilet",
+                    "details": "Toilets are finished with anti-skid Concept ceramic tiles for flooring and Concept ceramic wall tiles up to 7 feet height (door top level). All toilet areas are treated with Fosroc waterproofing liquid, applied in two coats to ensure effective protection against water seepage and long-term durability."
+                },
+                {
+                    "category": "Water Supply",
+                    "details": "Bore water for general usage is supplied through a central sump and overhead tanks. Hot water supply provisions are provided for the master bedroom and children’s toilets through geysers. A dedicated water purifier provision is provided above the kitchen sink for drinking water requirements."
+                },
+                {
+                    "category": "Lift",
+                    "details": "A 6-passenger capacity lift is provided with  MS gate rail door closers and an inbuilt rescue device for enhanced safety and reliability."
+                }
             ]
         },
         {
@@ -72,17 +138,18 @@
             "handover": "Feb 2026",
             "units": 10,
             "size": "534yds",
-            "flatSize": "1100 - 1450 Sft",
-            "configuration": "2 & 3 BHK",
+            "flatSize": "1650 - 1700 Sft",
+            "configuration": "3 BHK",
             "hasGenerator": true,
             "architect": "Global Engineering",
             "locationMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2806.0948221339336!2d78.4214599547487!3d17.52839567306413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8f003fa7d443%3A0x760dcc5221041690!2sRs%20residences!5e0!3m2!1sen!2sus!4v1766987350612!5m2!1sen!2sus",
             "image": "/project_assets/RS RESIDENCES/Elevation.jpg",
             "gallery": [],
             "floorPlans": [
-                "/project_assets/RS RESIDENCES/Floor Plan.pdf"
+                "/project_assets/RS RESIDENCES/Floor Plan.pdf",
+                "/project_assets/RS RESIDENCES/Parking Plan.pdf"
             ],
-            "facing": "West",
+            "facing": "East & North",
             "uds": "45 Sq.Yds",
             "distances": [
                 {
@@ -101,6 +168,72 @@
                     "location": "Usha Mullapudi hospital",
                     "distance": "5 mins"
                 }
+            ],
+            "specifications": [
+                {
+                    "category": "Structure",
+                    "details": "The building is designed with a robust Reinforced Cement Concrete (RCC) framed structural system, ensuring strength, stability, and durability."
+                },
+                {
+                    "category": "Superstructure",
+                    "details": "Red brick masonry work executed using high-quality bricks laid in cement mortar, ensuring strength and durability."
+                },
+                {
+                    "category": "Plastering",
+                    "details": "Internal walls are finished with two coats of smooth plastering, while external surfaces receive two coats of plastering with waterproof cement compounds to enhance durability and weather resistance."
+                },
+                {
+                    "category": "Windows",
+                    "details": "uPVC sliding window shutters are provided with mosquito mesh, a three-track system for smooth operation, and a painted MS safety grill fabricated from 10 mm square rods."
+                },
+                {
+                    "category": "Internal Doors",
+                    "details": "Doors are provided with African teakwood door frames of 4” × 3” section, fitted with 32 mm thick waterproof flush shutters finished with laminate on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Flooring",
+                    "details": "vitrified tiles of size 800 mm × 1600 mm are provided for the hall, bedrooms, dining area, kitchen, and balcony, offering a premium finish and uniform appearance. Anti-skid tiles are used in all toilets to ensure enhanced safety and slip resistance."
+                },
+                {
+                    "category": "Kitchen",
+                    "details": "The kitchen is finished with a Khammam Black granite countertop, fitted with a stainless steel sink, and complemented by a wall tile dado up to 3 feet height above the countertop for durability, hygiene, and ease of maintenance."
+                },
+                {
+                    "category": "Plumbing",
+                    "details": "All water pipelines with CPVC pipes, Truflo CPVC pipes for waste water and jaguar or Hindware Fittings. Diverters with faucets in the bathrooms."
+                },
+                {
+                    "category": "Main Door",
+                    "details": "This door system is constructed using African teakwood door frames with a finished section size of 5” × 3”, offering excellent strength, durability, and resistance to moisture and termites. fitted with 35 mm thick waterproof flush shutters finished with Teakwood veneer  on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Painting",
+                    "details": "Internal walls are finished with Berger Paints Premier Emulsion over a smooth  White wall putty base, providing a refined and durable finish. The building elevation features texture paint for enhanced aesthetics, while all other exterior walls are coated with Berger Rain Guard, ensuring superior protection against weather and moisture."
+                },
+                {
+                    "category": "Sanitary",
+                    "details": "Sanitary fittings of Jaquar or Hindware make are provided, including water closets (WC) for all toilets and a wash basin in the dining area."
+                },
+                {
+                    "category": "Electrical",
+                    "details": "Concealed PVC conduit wiring is provided using copper cables of Goldmedal Electricals make, along with Anchor modular switches and MCBs for enhanced safety and reliability. Adequate air-conditioner points are provided in all bedrooms, with geyser provisions in toilets. The kitchen is equipped with 15-amp power sockets for chimney, microwave oven, mixer grinder, and refrigerator. Provision is also made for lights, fans, calling bell, TV, telephone, internet, and intercom facilities, ensuring complete electrical convenience throughout the residence."
+                },
+                {
+                    "category": "Common Extras",
+                    "details": "Escorts sound proofing generator, transformer, 3- phase power connection panel board, drainage and car parking area. Solar fencing system all around the compound wall. Railing at balconies and stair cases. Granite flooring in corridors and staircase."
+                },
+                {
+                    "category": "Toilet",
+                    "details": "Toilets are finished with anti-skid Concept ceramic tiles for flooring and Concept ceramic wall tiles up to 7 feet height (door top level). All toilet areas are treated with Fosroc waterproofing liquid, applied in two coats to ensure effective protection against water seepage and long-term durability."
+                },
+                {
+                    "category": "Water Supply",
+                    "details": "Bore water for general usage is supplied through a central sump and overhead tanks. Hot water supply provisions are provided for the master bedroom and children’s toilets through geysers. A dedicated water purifier provision is provided above the kitchen sink for drinking water requirements."
+                },
+                {
+                    "category": "Lift",
+                    "details": "A 6-passenger capacity lift is provided with automatic door closers and an inbuilt rescue device for enhanced safety and reliability."
+                }
             ]
         },
         {
@@ -112,8 +245,8 @@
             "handover": "Oct 2025",
             "units": 15,
             "size": "765yds",
-            "flatSize": "1050 - 1300 Sft",
-            "configuration": "2 BHK",
+            "flatSize": "1190 - 1810 Sft",
+            "configuration": "2 & 3 BHK",
             "hasGenerator": true,
             "architect": "Global Engineering",
             "locationMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d969.0323789276836!2d78.42441737671516!3d17.486629151597636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91001d5bf9a5%3A0x3ac74beee75af007!2sVrindavan%20block%20A!5e1!3m2!1sen!2sus!4v1766986951577!5m2!1sen!2sus",
@@ -134,7 +267,7 @@
                 "/project_assets/VRINDAVAN BLOCK A/Floor Plan.pdf",
                 "/project_assets/VRINDAVAN BLOCK A/Parking Plan.pdf"
             ],
-            "facing": "North",
+            "facing": "East & North",
             "uds": "50 Sq.Yds",
             "distances": [
                 {
@@ -153,6 +286,72 @@
                     "location": "Amor hospitals",
                     "distance": "3 mins"
                 }
+            ],
+            "specifications": [
+                {
+                    "category": "Structure",
+                    "details": "The building is designed with a robust Reinforced Cement Concrete (RCC) framed structural system, ensuring strength, stability, and durability."
+                },
+                {
+                    "category": "Superstructure",
+                    "details": "Red brick masonry work executed using high-quality bricks laid in cement mortar, ensuring strength and durability."
+                },
+                {
+                    "category": "Plastering",
+                    "details": "Internal walls are finished with two coats of smooth plastering, while external surfaces receive two coats of plastering with waterproof cement compounds to enhance durability and weather resistance."
+                },
+                {
+                    "category": "Windows",
+                    "details": "uPVC sliding window shutters are provided with mosquito mesh, a three-track system for smooth operation, and a painted MS safety grill fabricated from 10 mm square rods."
+                },
+                {
+                    "category": "Internal Doors",
+                    "details": "Doors are provided with African teakwood door frames of 4” × 3” section, fitted with 32 mm thick waterproof flush shutters finished with laminate on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Flooring",
+                    "details": "vitrified tiles of size 800 mm × 1600 mm are provided for the hall, bedrooms, dining area, kitchen, and balcony, offering a premium finish and uniform appearance. Anti-skid tiles are used in all toilets to ensure enhanced safety and slip resistance."
+                },
+                {
+                    "category": "Kitchen",
+                    "details": "The kitchen is finished with a Khammam Black granite countertop, fitted with a stainless steel sink, and complemented by a wall tile dado up to 3 feet height above the countertop for durability, hygiene, and ease of maintenance."
+                },
+                {
+                    "category": "Plumbing",
+                    "details": "All water pipelines with CPVC pipes, Truflo CPVC pipes for waste water and jaguar or Hindware Fittings. Diverters with faucets in the bathrooms."
+                },
+                {
+                    "category": "Main Door",
+                    "details": "This door system is constructed using African teakwood door frames with a finished section size of 5” × 3”, offering excellent strength, durability, and resistance to moisture and termites. fitted with 35 mm thick waterproof flush shutters finished with Teakwood veneer  on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Painting",
+                    "details": "Internal walls are finished with Berger Paints Premier Emulsion over a smooth  White wall putty base, providing a refined and durable finish. The building elevation features texture paint for enhanced aesthetics, while all other exterior walls are coated with Berger Rain Guard, ensuring superior protection against weather and moisture."
+                },
+                {
+                    "category": "Sanitary",
+                    "details": "Sanitary fittings of Jaquar or Hindware make are provided, including water closets (WC) for all toilets and a wash basin in the dining area."
+                },
+                {
+                    "category": "Electrical",
+                    "details": "Concealed PVC conduit wiring is provided using copper cables of Goldmedal Electricals make, along with Anchor modular switches and MCBs for enhanced safety and reliability. Adequate air-conditioner points are provided in all bedrooms, with geyser provisions in toilets. The kitchen is equipped with 15-amp power sockets for chimney, microwave oven, mixer grinder, and refrigerator. Provision is also made for lights, fans, calling bell, TV, telephone, internet, and intercom facilities, ensuring complete electrical convenience throughout the residence."
+                },
+                {
+                    "category": "Common Extras",
+                    "details": "Escorts sound proofing generator, transformer, 3- phase power connection panel board, drainage and car parking area. Solar fencing system all around the compound wall. Railing at balconies and stair cases. Granite flooring in corridors and staircase."
+                },
+                {
+                    "category": "Toilet",
+                    "details": "Toilets are finished with anti-skid Concept ceramic tiles for flooring and Concept ceramic wall tiles up to 7 feet height (door top level). All toilet areas are treated with Fosroc waterproofing liquid, applied in two coats to ensure effective protection against water seepage and long-term durability."
+                },
+                {
+                    "category": "Water Supply",
+                    "details": "Bore water for general usage is supplied through a central sump and overhead tanks. Hot water supply provisions are provided for the master bedroom and children’s toilets through geysers. A dedicated water purifier provision is provided above the kitchen sink for drinking water requirements."
+                },
+                {
+                    "category": "Lift",
+                    "details": "A 6-passenger capacity lift is provided with automatic door closers and an inbuilt rescue device for enhanced safety and reliability."
+                }
             ]
         },
         {
@@ -164,7 +363,7 @@
             "handover": "Oct 2025",
             "units": 10,
             "size": "435yds",
-            "flatSize": "1100 Sft",
+            "flatSize": "1250 - 1335 Sft",
             "configuration": "2 BHK",
             "hasGenerator": true,
             "architect": "Global Engineering",
@@ -181,7 +380,7 @@
             "floorPlans": [
                 "/project_assets/VRINDAVAN BLOCK B/Floor Plan.pdf"
             ],
-            "facing": "East",
+            "facing": "East & North",
             "uds": "40 Sq.Yds",
             "distances": [
                 {
@@ -200,6 +399,72 @@
                     "location": "Amor hospitals",
                     "distance": "3 mins"
                 }
+            ],
+            "specifications": [
+                {
+                    "category": "Structure",
+                    "details": "The building is designed with a robust Reinforced Cement Concrete (RCC) framed structural system, ensuring strength, stability, and durability."
+                },
+                {
+                    "category": "Superstructure",
+                    "details": "Red brick masonry work executed using high-quality bricks laid in cement mortar, ensuring strength and durability."
+                },
+                {
+                    "category": "Plastering",
+                    "details": "Internal walls are finished with two coats of smooth plastering, while external surfaces receive two coats of plastering with waterproof cement compounds to enhance durability and weather resistance."
+                },
+                {
+                    "category": "Windows",
+                    "details": "uPVC sliding window shutters are provided with mosquito mesh, a three-track system for smooth operation, and a painted MS safety grill fabricated from 10 mm square rods."
+                },
+                {
+                    "category": "Internal Doors",
+                    "details": "Doors are provided with African teakwood door frames of 4” × 3” section, fitted with 32 mm thick waterproof flush shutters finished with laminate on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Flooring",
+                    "details": "vitrified tiles of size 800 mm × 1600 mm are provided for the hall, bedrooms, dining area, kitchen, and balcony, offering a premium finish and uniform appearance. Anti-skid tiles are used in all toilets to ensure enhanced safety and slip resistance."
+                },
+                {
+                    "category": "Kitchen",
+                    "details": "The kitchen is finished with a Khammam Black granite countertop, fitted with a stainless steel sink, and complemented by a wall tile dado up to 3 feet height above the countertop for durability, hygiene, and ease of maintenance."
+                },
+                {
+                    "category": "Plumbing",
+                    "details": "All water pipelines with CPVC pipes, Truflo CPVC pipes for waste water and jaguar or Hindware Fittings. Diverters with faucets in the bathrooms."
+                },
+                {
+                    "category": "Main Door",
+                    "details": "This door system is constructed using African teakwood door frames with a finished section size of 5” × 3”, offering excellent strength, durability, and resistance to moisture and termites. fitted with 35 mm thick waterproof flush shutters finished with Teakwood veneer  on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Painting",
+                    "details": "Internal walls are finished with Berger Paints Premier Emulsion over a smooth  White wall putty base, providing a refined and durable finish. The building elevation features texture paint for enhanced aesthetics, while all other exterior walls are coated with Berger Rain Guard, ensuring superior protection against weather and moisture."
+                },
+                {
+                    "category": "Sanitary",
+                    "details": "Sanitary fittings of Jaquar or Hindware make are provided, including water closets (WC) for all toilets and a wash basin in the dining area."
+                },
+                {
+                    "category": "Electrical",
+                    "details": "Concealed PVC conduit wiring is provided using copper cables of Goldmedal Electricals make, along with Anchor modular switches and MCBs for enhanced safety and reliability. Adequate air-conditioner points are provided in all bedrooms, with geyser provisions in toilets. The kitchen is equipped with 15-amp power sockets for chimney, microwave oven, mixer grinder, and refrigerator. Provision is also made for lights, fans, calling bell, TV, telephone, internet, and intercom facilities, ensuring complete electrical convenience throughout the residence."
+                },
+                {
+                    "category": "Common Extras",
+                    "details": "Escorts sound proofing generator, transformer, 3- phase power connection panel board, drainage and car parking area. Solar fencing system all around the compound wall. Railing at balconies and stair cases. Granite flooring in corridors and staircase."
+                },
+                {
+                    "category": "Toilet",
+                    "details": "Toilets are finished with anti-skid Concept ceramic tiles for flooring and Concept ceramic wall tiles up to 7 feet height (door top level). All toilet areas are treated with Fosroc waterproofing liquid, applied in two coats to ensure effective protection against water seepage and long-term durability."
+                },
+                {
+                    "category": "Water Supply",
+                    "details": "Bore water for general usage is supplied through a central sump and overhead tanks. Hot water supply provisions are provided for the master bedroom and children’s toilets through geysers. A dedicated water purifier provision is provided above the kitchen sink for drinking water requirements."
+                },
+                {
+                    "category": "Lift",
+                    "details": "A 6-passenger capacity lift is provided with automatic door closers and an inbuilt rescue device for enhanced safety and reliability."
+                }
             ]
         },
         {
@@ -211,8 +476,8 @@
             "handover": "Aug 2024",
             "units": 20,
             "size": "808yds",
-            "flatSize": "1150 - 1500 Sft",
-            "configuration": "2 & 3 BHK",
+            "flatSize": "1150 Sft",
+            "configuration": "2 BHK",
             "hasGenerator": true,
             "architect": "Global Engineering",
             "locationMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1902.4237786148744!2d78.4206145!3d17.514789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91003fe8e5f9%3A0x471667dd086f048a!2sSilver%20Square%20Apartments!5e0!3m2!1sen!2sus!4v1766987238285!5m2!1sen!2sus",
@@ -230,9 +495,10 @@
                 "/project_assets/SILVER SQUARE/10.jpeg"
             ],
             "floorPlans": [
-                "/project_assets/SILVER SQUARE/Floor Plan.pdf"
+                "/project_assets/SILVER SQUARE/Floor Plan.pdf",
+                "/project_assets/SILVER SQUARE/Parking Plan.pdf"
             ],
-            "facing": "South",
+            "facing": "East & West",
             "uds": "55 Sq.Yds",
             "distances": [
                 {
@@ -251,6 +517,72 @@
                     "location": "Usha Mullapudi hospital",
                     "distance": "5 mins"
                 }
+            ],
+            "specifications": [
+                {
+                    "category": "Structure",
+                    "details": "The building is designed with a robust Reinforced Cement Concrete (RCC) framed structural system, ensuring strength, stability, and durability."
+                },
+                {
+                    "category": "Superstructure",
+                    "details": "Red brick masonry work executed using high-quality bricks laid in cement mortar, ensuring strength and durability."
+                },
+                {
+                    "category": "Plastering",
+                    "details": "Internal walls are finished with two coats of smooth plastering, while external surfaces receive two coats of plastering with waterproof cement compounds to enhance durability and weather resistance."
+                },
+                {
+                    "category": "Windows",
+                    "details": "uPVC sliding window shutters are provided with mosquito mesh, a three-track system for smooth operation, and a painted MS safety grill fabricated from 10 mm square rods."
+                },
+                {
+                    "category": "Internal Doors",
+                    "details": "Doors are provided with African teakwood door frames of 4” × 3” section, fitted with 32 mm thick waterproof flush shutters finished with laminate on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Flooring",
+                    "details": "vitrified tiles of size 800 mm × 1600 mm are provided for the hall, bedrooms, dining area, kitchen, and balcony, offering a premium finish and uniform appearance. Anti-skid tiles are used in all toilets to ensure enhanced safety and slip resistance."
+                },
+                {
+                    "category": "Kitchen",
+                    "details": "The kitchen is finished with a Khammam Black granite countertop, fitted with a stainless steel sink, and complemented by a wall tile dado up to 3 feet height above the countertop for durability, hygiene, and ease of maintenance."
+                },
+                {
+                    "category": "Plumbing",
+                    "details": "All water supply and waste water piping systems are provided using Truflo CPVC pipes, ensuring durability, leak resistance, and long-term performance."
+                },
+                {
+                    "category": "Main Door",
+                    "details": "This door system is constructed using African teakwood door frames with a finished section size of 5” × 3”, offering excellent strength, durability, and resistance to moisture and termites. fitted with 35 mm thick waterproof flush shutters finished with Teakwood veneer  on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Painting",
+                    "details": "Internal walls are finished with Berger Paints Premier Emulsion over a smooth  White wall putty base, providing a refined and durable finish. The building elevation features texture paint for enhanced aesthetics, while all other exterior walls are coated with Berger Rain Guard, ensuring superior protection against weather and moisture."
+                },
+                {
+                    "category": "Sanitary",
+                    "details": "Sanitary fittings of Jaquar or Hindware make are provided, including water closets (WC) for all toilets and a wash basin in the dining area."
+                },
+                {
+                    "category": "Electrical",
+                    "details": "Concealed PVC conduit wiring is provided using copper cables of Goldmedal Electricals make, along with Anchor modular switches and MCBs for enhanced safety and reliability. Adequate air-conditioner points are provided in all bedrooms, with geyser provisions in toilets. The kitchen is equipped with 15-amp power sockets for chimney, microwave oven, mixer grinder, and refrigerator. Provision is also made for lights, fans, calling bell, TV, telephone, internet, and intercom facilities, ensuring complete electrical convenience throughout the residence."
+                },
+                {
+                    "category": "Common Extras",
+                    "details": "The project is equipped with a soundproof diesel generator of Escorts make, along with a transformer and 3-phase power connection panel board to ensure uninterrupted and stable power supply. Adequate provisions are made for drainage systems and designated car parking areas. The premises are secured with a solar fencing system installed along the entire compound wall. Protective railings are provided for all balconies and staircases, while corridors and staircases are finished with premium granite flooring for durability, safety, and a refined appearance."
+                },
+                {
+                    "category": "Toilet",
+                    "details": "Toilets are finished with anti-skid Concept ceramic tiles for flooring and Concept ceramic wall tiles up to 7 feet height (door top level). All toilet areas are treated with Fosroc waterproofing liquid, applied in two coats to ensure effective protection against water seepage and long-term durability."
+                },
+                {
+                    "category": "Water Supply",
+                    "details": "Bore water for general usage is supplied through a central sump and overhead tanks. Hot water supply provisions are provided for the master bedroom and children’s toilets through geysers. A dedicated water purifier provision is provided above the kitchen sink for drinking water requirements."
+                },
+                {
+                    "category": "Lift",
+                    "details": "A 6-passenger capacity lift is provided with automatic door closers and an inbuilt rescue device for enhanced safety and reliability."
+                }
             ]
         },
         {
@@ -262,8 +594,8 @@
             "handover": "Feb 2024",
             "units": 10,
             "size": "435 yds",
-            "flatSize": "2200 Sft",
-            "configuration": "3 BHK",
+            "flatSize": "1300 - 1335 Sft",
+            "configuration": "2 BHK",
             "hasGenerator": true,
             "architect": "Global Engineering",
             "locationMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.0353331555752!2d78.30093667596612!3d17.458022883441277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93006850da4d%3A0x87eedc6490280348!2sThe%20Orchard!5e0!3m2!1sen!2sus!4v1766987302258!5m2!1sen!2sus",
@@ -282,9 +614,10 @@
                 "/project_assets/THE ORCHARD/11.jpeg"
             ],
             "floorPlans": [
-                "/project_assets/THE ORCHARD/Floor Plan.pdf"
+                "/project_assets/THE ORCHARD/Floor Plan.pdf",
+                "/project_assets/THE ORCHARD/Parking Plan.pdf"
             ],
-            "facing": "East",
+            "facing": "East & West",
             "uds": "60 Sq.Yds",
             "distances": [
                 {
@@ -303,6 +636,72 @@
                     "location": "ORR exit",
                     "distance": "15 mins"
                 }
+            ],
+            "specifications": [
+                {
+                    "category": "Structure",
+                    "details": "The building is designed with a robust Reinforced Cement Concrete (RCC) framed structural system, ensuring strength, stability, and durability."
+                },
+                {
+                    "category": "Superstructure",
+                    "details": "Red brick masonry work executed using high-quality bricks laid in cement mortar, ensuring strength and durability."
+                },
+                {
+                    "category": "Plastering",
+                    "details": "Internal walls are finished with two coats of smooth plastering, while external surfaces receive two coats of plastering with waterproof cement compounds to enhance durability and weather resistance."
+                },
+                {
+                    "category": "Windows",
+                    "details": "uPVC sliding window shutters are provided with mosquito mesh, a three-track system for smooth operation, and a painted MS safety grill fabricated from 10 mm square rods."
+                },
+                {
+                    "category": "Internal Doors",
+                    "details": "Doors are provided with African teakwood door frames of 4” × 3” section, fitted with 32 mm thick waterproof flush shutters finished with laminate on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Flooring",
+                    "details": "vitrified tiles of size 800 mm × 1600 mm are provided for the hall, bedrooms, dining area, kitchen, and balcony, offering a premium finish and uniform appearance. Anti-skid tiles are used in all toilets to ensure enhanced safety and slip resistance."
+                },
+                {
+                    "category": "Kitchen",
+                    "details": "The kitchen is finished with a Khammam Black granite countertop, fitted with a stainless steel sink, and complemented by a wall tile dado up to 3 feet height above the countertop for durability, hygiene, and ease of maintenance."
+                },
+                {
+                    "category": "Plumbing",
+                    "details": "All water pipelines with CPVC pipes, Truflo CPVC pipes for waste water and jaguar or Hindware Fittings. Diverters with faucets in the bathrooms."
+                },
+                {
+                    "category": "Main Door",
+                    "details": "This door system is constructed using African teakwood door frames with a finished section size of 5” × 3”, offering excellent strength, durability, and resistance to moisture and termites. fitted with 35 mm thick waterproof flush shutters finished with Teakwood veneer  on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Painting",
+                    "details": "Internal walls are finished with Berger Paints Premier Emulsion over a smooth  White wall putty base, providing a refined and durable finish. The building elevation features texture paint for enhanced aesthetics, while all other exterior walls are coated with Berger Rain Guard, ensuring superior protection against weather and moisture."
+                },
+                {
+                    "category": "Sanitary",
+                    "details": "Sanitary fittings of Jaquar or Hindware make are provided, including water closets (WC) for all toilets and a wash basin in the dining area."
+                },
+                {
+                    "category": "Electrical",
+                    "details": "Concealed PVC conduit wiring is provided using copper cables of Goldmedal Electricals make, along with Anchor modular switches and MCBs for enhanced safety and reliability. Adequate air-conditioner points are provided in all bedrooms, with geyser provisions in toilets. The kitchen is equipped with 15-amp power sockets for chimney, microwave oven, mixer grinder, and refrigerator. Provision is also made for lights, fans, calling bell, TV, telephone, internet, and intercom facilities, ensuring complete electrical convenience throughout the residence."
+                },
+                {
+                    "category": "Common Extras",
+                    "details": "Escorts sound proofing generator, transformer, 3- phase power connection panel board, drainage and car parking area. Solar fencing system all around the compound wall. Railing at balconies and stair cases. Granite flooring in corridors and staircase."
+                },
+                {
+                    "category": "Toilet",
+                    "details": "Toilets are finished with anti-skid Concept ceramic tiles for flooring and Concept ceramic wall tiles up to 7 feet height (door top level). All toilet areas are treated with Fosroc waterproofing liquid, applied in two coats to ensure effective protection against water seepage and long-term durability."
+                },
+                {
+                    "category": "Water Supply",
+                    "details": "Bore water for general usage is supplied through a central sump and overhead tanks. Hot water supply provisions are provided for the master bedroom and children’s toilets through geysers. A dedicated water purifier provision is provided above the kitchen sink for drinking water requirements."
+                },
+                {
+                    "category": "Lift",
+                    "details": "A 6-passenger capacity lift is provided with automatic door closers and an inbuilt rescue device for enhanced safety and reliability."
+                }
             ]
         },
         {
@@ -314,8 +713,8 @@
             "handover": "Feb 2023",
             "units": 20,
             "size": "808yds",
-            "flatSize": "1150 - 1500 Sft",
-            "configuration": "2 & 3 BHK",
+            "flatSize": "1125 Sft",
+            "configuration": "2 BHK",
             "hasGenerator": true,
             "architect": "Global Engineering",
             "locationMap": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.8464363803396!2d78.41737587596614!3d17.514842483394244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91a7c1a5e977%3A0x8373f7dfe5d18738!2sJewel%20Crest!5e0!3m2!1sen!2sus!4v1766987166961!5m2!1sen!2sus",
@@ -335,7 +734,7 @@
             "floorPlans": [
                 "/project_assets/JEWEL CREST/Floor Plan.pdf"
             ],
-            "facing": "West",
+            "facing": "East & West",
             "uds": "70 Sq.Yds",
             "distances": [
                 {
@@ -354,73 +753,73 @@
                     "location": "Usha Mullapudi hospital",
                     "distance": "5 mins"
                 }
+            ],
+            "specifications": [
+                {
+                    "category": "Structure",
+                    "details": "The building is designed with a robust Reinforced Cement Concrete (RCC) framed structural system, ensuring strength, stability, and durability."
+                },
+                {
+                    "category": "Superstructure",
+                    "details": "Red brick masonry work executed using high-quality bricks laid in cement mortar, ensuring strength and durability."
+                },
+                {
+                    "category": "Plastering",
+                    "details": "Internal walls are finished with two coats of smooth plastering, while external surfaces receive two coats of plastering with waterproof cement compounds to enhance durability and weather resistance."
+                },
+                {
+                    "category": "Windows",
+                    "details": "uPVC sliding window shutters are provided with mosquito mesh, a three-track system for smooth operation, and a painted MS safety grill fabricated from 10 mm square rods."
+                },
+                {
+                    "category": "Internal Doors",
+                    "details": "Doors are provided with African teakwood door frames of 4” × 3” section, fitted with 32 mm thick waterproof flush shutters finished with laminate on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Flooring",
+                    "details": "vitrified tiles of size 800 mm × 1600 mm are provided for the hall, bedrooms, dining area, kitchen, and balcony, offering a premium finish and uniform appearance. Anti-skid tiles are used in all toilets to ensure enhanced safety and slip resistance."
+                },
+                {
+                    "category": "Kitchen",
+                    "details": "The kitchen is finished with a Khammam Black granite countertop, fitted with a stainless steel sink, and complemented by a wall tile dado up to 3 feet height above the countertop for durability, hygiene, and ease of maintenance."
+                },
+                {
+                    "category": "Plumbing",
+                    "details": "All water pipelines with CPVC pipes, Truflo CPVC pipes for waste water and jaguar or Hindware Fittings. Diverters with faucets in the bathrooms."
+                },
+                {
+                    "category": "Main Door",
+                    "details": "This door system is constructed using African teakwood door frames with a finished section size of 5” × 3”, offering excellent strength, durability, and resistance to moisture and termites. fitted with 35 mm thick waterproof flush shutters finished with Teakwood veneer  on both sides. The doors are completed with reliable Europa lock fittings, ensuring durability, smooth operation, and long-term performance."
+                },
+                {
+                    "category": "Painting",
+                    "details": "Internal walls are finished with Berger Paints Premier Emulsion over a smooth  White wall putty base, providing a refined and durable finish. The building elevation features texture paint for enhanced aesthetics, while all other exterior walls are coated with Berger Rain Guard, ensuring superior protection against weather and moisture."
+                },
+                {
+                    "category": "Sanitary",
+                    "details": "Sanitary fittings of Jaquar or Hindware make are provided, including water closets (WC) for all toilets and a wash basin in the dining area."
+                },
+                {
+                    "category": "Electrical",
+                    "details": "Concealed PVC conduit wiring is provided using copper cables of Goldmedal Electricals make, along with Anchor modular switches and MCBs for enhanced safety and reliability. Adequate air-conditioner points are provided in all bedrooms, with geyser provisions in toilets. The kitchen is equipped with 15-amp power sockets for chimney, microwave oven, mixer grinder, and refrigerator. Provision is also made for lights, fans, calling bell, TV, telephone, internet, and intercom facilities, ensuring complete electrical convenience throughout the residence."
+                },
+                {
+                    "category": "Common Extras",
+                    "details": "Escorts sound proofing generator, transformer, 3- phase power connection panel board, drainage and car parking area. Solar fencing system all around the compound wall. Railing at balconies and stair cases. Granite flooring in corridors and staircase."
+                },
+                {
+                    "category": "Toilet",
+                    "details": "Toilets are finished with anti-skid Concept ceramic tiles for flooring and Concept ceramic wall tiles up to 7 feet height (door top level). All toilet areas are treated with Fosroc waterproofing liquid, applied in two coats to ensure effective protection against water seepage and long-term durability."
+                },
+                {
+                    "category": "Water Supply",
+                    "details": "Bore water for general usage is supplied through a central sump and overhead tanks. Hot water supply provisions are provided for the master bedroom and children’s toilets through geysers. A dedicated water purifier provision is provided above the kitchen sink for drinking water requirements."
+                },
+                {
+                    "category": "Lift",
+                    "details": "A 6-passenger capacity lift is provided with automatic door closers and an inbuilt rescue device for enhanced safety and reliability."
+                }
             ]
-        }
-    ],
-    "specifications": [
-        {
-            "category": "Structure",
-            "details": "RCC- Framed structure"
-        },
-        {
-            "category": "Superstructure",
-            "details": "Red Brick work in cement mortar"
-        },
-        {
-            "category": "Plastering",
-            "details": "Two coats of smooth internal plastering and two coats of external plastering with water proof cement compounds."
-        },
-        {
-            "category": "Windows",
-            "details": "UPVC sliding shutters with mosquito mesh with three track provision and MS painted grill of 10mm square rod."
-        },
-        {
-            "category": "Internal Doors",
-            "details": "Balharshah Indian teakwood door frames section of 4\"x 3\" with teakwood and water proof flush shutters of 32mm thickness for toilets. One side veneer, another side PVC sheet with enamel painting with Godrej cylindrical locks."
-        },
-        {
-            "category": "Flooring",
-            "details": "Oriental Bell 800mm x 800mm vitrified tiles for hall, bedrooms, dining, Kitchen and Balcony. Anti- skid tiles in toilets."
-        },
-        {
-            "category": "Kitchen",
-            "details": "Khammam black Granite counter- top with stainless steel sink 3' height wall tile dado above counter top."
-        },
-        {
-            "category": "Plumbing",
-            "details": "All water pipelines with CPVC pipes, SUDHAKAR PVC pipes for waste water and jaguar fittings or equivalent. Diverters with faucets in the bathrooms."
-        },
-        {
-            "category": "Main Door",
-            "details": "Balharshah Indian teakwood door frames section 5\" x 3\" and teak wood door, single teak shutter with melamine polish and brass fittings with Godrej locking system."
-        },
-        {
-            "category": "Painting",
-            "details": "Asian premier emulsion for inner walls with Birla putty finish, elevation with texture. Apex paint and rain guard for other exterior walls."
-        },
-        {
-            "category": "Sanitary",
-            "details": "Jaguar or equivalent ( single piece white) sanitary fittings. WC for toilets. Black granite counter top, wash basin in dining area."
-        },
-        {
-            "category": "Electrical",
-            "details": "Concealed PVC pipes and copper RR Kable wining, Legrand modular switches and MCB's. provision of adequate points of AC in bedrooms, geyser provision in toilets. 15 amps sockets for chimney, microwave oven, mixer grinder, refrigerator in kitchen, lights, fans, calling bell, TV, telephone, internet and intercom facility."
-        },
-        {
-            "category": "Common Extras",
-            "details": "Mahendra/ ashoka Leyland sound proofing generator, transformer, 3- phase power connection panel board, drainage and car parking area. Solar fencing system all around the compound wall. Railing at balconies and stair cases. Granite flooring in corridors and staircase."
-        },
-        {
-            "category": "Toilet",
-            "details": "Anti skid concept ceramic tiles for flooring and walls concept ceramic tiles up to 7' (door top level) fosroc water proofing liquids for toilet, with water proofing with two coats."
-        },
-        {
-            "category": "Water Supply",
-            "details": "Bore water for general purpose will be supplied through sump and overhead tanks. Hot water supply provision for master and children's toilets through geyser. Water purifier provision above kitchen sink."
-        },
-        {
-            "category": "Lift",
-            "details": "KONE lift of 6 passengers capacity with auto closer doors with rescue device featuring granite cladding."
         }
     ]
 }

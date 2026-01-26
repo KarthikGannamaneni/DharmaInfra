@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -353,22 +353,11 @@ const ProjectDetail: React.FC = () => {
             )}
             {/* Specifications Section */}
             {(() => {
-                const globalSpecs = data.specifications || [];
                 const projectSpecs = project.specifications || [];
                 const hiddenSpecs = project.hiddenSpecifications || [];
 
-                // 1. Merge global with overrides
-                let finalSpecs = globalSpecs.map(gs => {
-                    const override = projectSpecs.find(ps => ps.category === gs.category);
-                    return override || gs;
-                });
-
-                // 2. Append strictly new categories from project
-                const newSpecs = projectSpecs.filter(ps => !globalSpecs.some(gs => gs.category === ps.category));
-                finalSpecs = [...finalSpecs, ...newSpecs];
-
-                // 3. Filter out hidden specifications
-                finalSpecs = finalSpecs.filter(s => !hiddenSpecs.includes(s.category));
+                // Filter out hidden specifications
+                const finalSpecs = projectSpecs.filter(s => !hiddenSpecs.includes(s.category));
 
                 if (finalSpecs.length === 0) return null;
 

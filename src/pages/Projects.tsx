@@ -137,10 +137,20 @@ const Projects: React.FC = () => {
             <div className="projects-page-wrapper">
                 <div style={{ maxWidth: '1800px', margin: '0 auto' }}>
 
-                    <header style={{ marginBottom: '32px' }}>
-                        <h1 className="font-cinzel" style={{ fontSize: '2.5rem', color: '#1a202c', marginBottom: '8px' }}>Projects</h1>
-                        <p style={{ color: '#718096', fontFamily: 'sans-serif' }}>Explore our signature developments.</p>
-                    </header>
+                    {/* <header>
+                        <h1 className="font-cinzel" style={{
+                            position: 'absolute',
+                            top: '2.5rem', // Aligned with Navbar top (approx 2rem + padding)
+                            left: '2rem',
+                            fontSize: '2.5rem',
+                            color: '#1a202c',
+                            margin: 0,
+                            zIndex: 20
+                        }}>Projects</h1>
+                    </header> */}
+
+                    {/* Spacer to prevent content from going under the fixed header */}
+                    <div style={{ height: '30px' }}></div>
 
                     <div className="projects-layout">
 

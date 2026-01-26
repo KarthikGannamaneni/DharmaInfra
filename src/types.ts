@@ -46,5 +46,4 @@ export interface Company {
 export interface AppData {
     company: Company;
     projects: Project[];
-    specifications: ProjectSpecification[];
 }

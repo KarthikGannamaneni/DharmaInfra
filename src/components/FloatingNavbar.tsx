@@ -5,13 +5,25 @@ import HouseIcon from './icons/HouseIcon';
 
 const FloatingNavbar: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [activeSection, setActiveSection] = useState<string>('');
     const location = useLocation();
 
     const navItems = [
-        { name: 'About Us', path: '/about-us' },
+        { name: 'Projects', path: '/projects' },
         { name: 'Home', path: '/' },
-        { name: 'Projects', path: '/projects' }
+        { name: 'Contact Us', path: '#contact' }
     ];
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+        if (path.startsWith('#')) {
+            e.preventDefault();
+            const element = document.getElementById(path.substring(1));
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                setActiveSection(path.substring(1));
+            }
+        }
+    };
 
     useEffect(() => {
         const toggleVisibility = () => {
@@ -26,6 +38,51 @@ const FloatingNavbar: React.FC = () => {
 
         return () => window.removeEventListener('scroll', toggleVisibility);
     }, []);
+
+    useEffect(() => {
+        // Reset active section when path changes
+        if (!location.hash) {
+            setActiveSection('');
+        }
+    }, [location.pathname, location.hash]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(entry.target.id);
+                    } else {
+                        if (entry.target.id === 'contact') {
+                            setActiveSection((prev) => (prev === 'contact' ? '' : prev));
+                        }
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            observer.observe(contactSection);
+        }
+
+        return () => {
+            if (contactSection) {
+                observer.unobserve(contactSection);
+            }
+        };
+    }, []);
+
+    const isActive = (path: string) => {
+        if (path.startsWith('#')) {
+            return activeSection === path.substring(1);
+        }
+        if (path === '/') {
+            return location.pathname === '/' && !activeSection;
+        }
+        return location.pathname.startsWith(path) && !activeSection;
+    };
 
     return (
         <AnimatePresence>
@@ -57,41 +114,45 @@ const FloatingNavbar: React.FC = () => {
                         }}
                     >
                         <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}>
-                            {navItems.map((link) => (
-                                <li key={link.name}>
-                                    <Link
-                                        to={link.path}
-                                        style={{
-                                            color: location.pathname === link.path ? 'var(--color-text)' : 'var(--color-accent-light)',
-                                            transition: 'color 0.3s ease',
-                                            fontWeight: 500,
-                                            fontSize: '0.9rem',
-                                            textDecoration: 'none',
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'center'
-                                        }}
-                                    >
-                                        {link.name === 'Home' ? (
-                                            <HouseIcon size={24} />
-                                        ) : (
-                                            link.name
-                                        )}
-                                        {location.pathname === link.path && (
-                                            <motion.div
-                                                layoutId="floating-underline"
-                                                style={{
-                                                    height: '2px',
-                                                    width: '100%',
-                                                    backgroundColor: 'var(--color-text)',
-                                                    marginTop: '2px',
-                                                    borderRadius: '2px'
-                                                }}
-                                            />
-                                        )}
-                                    </Link>
-                                </li>
-                            ))}
+                            {navItems.map((link) => {
+                                const active = isActive(link.path);
+                                return (
+                                    <li key={link.name}>
+                                        <Link
+                                            to={link.path}
+                                            onClick={(e) => handleNavClick(e, link.path)}
+                                            style={{
+                                                color: active ? 'var(--color-text)' : 'var(--color-accent-light)',
+                                                transition: 'color 0.3s ease',
+                                                fontWeight: 500,
+                                                fontSize: '0.9rem',
+                                                textDecoration: 'none',
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                alignItems: 'center'
+                                            }}
+                                        >
+                                            {link.name === 'Home' ? (
+                                                <HouseIcon size={24} />
+                                            ) : (
+                                                link.name
+                                            )}
+                                            {active && (
+                                                <motion.div
+                                                    layoutId="floating-underline"
+                                                    style={{
+                                                        height: '2px',
+                                                        width: '100%',
+                                                        backgroundColor: 'var(--color-text)',
+                                                        marginTop: '2px',
+                                                        borderRadius: '2px'
+                                                    }}
+                                                />
+                                            )}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </motion.nav>
                 </div>
