@@ -14,7 +14,7 @@ const App: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     return (
-        <Router basename="/DharmaInfra/">
+        <Router>
             <ScrollToTop />
             {loading && <Preloader onComplete={() => setLoading(false)} />}
             <Routes>
