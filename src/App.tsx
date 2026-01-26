@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import Layout from './components/Layout';
 import Home from './pages/Home';
@@ -25,6 +25,7 @@ const App: React.FC = () => {
                     <Route path="projects" element={<Projects />} />
 
                     <Route path="projects/:id" element={<ProjectDetail />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
                 </Route>
             </Routes>
         </Router>
