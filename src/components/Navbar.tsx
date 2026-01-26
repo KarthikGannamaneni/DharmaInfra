@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
     const navItems = [
         { name: 'Projects', path: '/projects' },
         { name: 'Home', path: '/' },
-        { name: 'Contact Us', path: '#contact' }
+        { name: 'Contact', path: '#contact' }
     ];
 
     const isHome = location.pathname === '/';
