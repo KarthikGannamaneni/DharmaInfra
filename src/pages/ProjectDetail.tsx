@@ -133,7 +133,7 @@ const ProjectDetail: React.FC = () => {
                     <div className="container">
                         <h1 style={{
                             color: '#fff',
-                            fontSize: '4rem',
+                            fontSize: 'clamp(2.5rem, 8vw, 4rem)',
                             marginBottom: '0',
                             fontFamily: 'Cinzel, serif',
                             textShadow: '0 2px 10px rgba(0,0,0,0.5)'

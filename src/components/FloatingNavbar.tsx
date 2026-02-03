@@ -52,14 +52,21 @@ const FloatingNavbar: React.FC = () => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         setActiveSection(entry.target.id);
+                        if (entry.target.id === 'contact') {
+                            setIsVisible(false);
+                        }
                     } else {
                         if (entry.target.id === 'contact') {
                             setActiveSection((prev) => (prev === 'contact' ? '' : prev));
+                            // Re-check scroll position to determine visibility when leaving contact
+                            if (window.scrollY > 100) {
+                                setIsVisible(true);
+                            }
                         }
                     }
                 });
             },
-            { threshold: 0.5 }
+            { threshold: 0.1 } // Trigger as soon as 10% of footer is visible
         );
 
         const contactSection = document.getElementById('contact');

@@ -9,10 +9,10 @@ const Footer: React.FC = () => {
             backgroundColor: '#F2F1EF', // Slightly darker than bg
             textAlign: 'left'
         }}>
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'stretch', flexWrap: 'wrap', gap: '0' }}>
+            <div className={`container footer-content`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'stretch', flexWrap: 'wrap', gap: '0' }}>
                 {/* Left Side: Logo & Tagline */}
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div className="footer-left" style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
                             <HouseIcon size={60} strokeWidth={2.5} style={{ color: '#4A4E51' }} />
                             <span style={{
@@ -26,15 +26,15 @@ const Footer: React.FC = () => {
                                 Dharma Infra
                             </span>
                         </div>
-                        <p style={{ color: 'var(--color-accent)', margin: 0 }}>Every home has a story. Let’s build yours.</p>
+                        <p style={{ color: 'var(--color-accent)', margin: 0, textAlign: 'center' }}>Every home has a story. Let’s build yours.</p>
                     </div>
                 </div>
 
                 {/* Vertical Separator */}
-                <div style={{ width: '1px', backgroundColor: 'rgba(74, 78, 81, 0.2)', margin: '0 2rem' }} />
+                <div className="footer-separator" style={{ width: '1px', backgroundColor: 'rgba(74, 78, 81, 0.2)', margin: '0 2rem' }} />
 
                 {/* Right Side: Contact Info */}
-                <div style={{
+                <div className="footer-right" style={{
                     flex: 1,
                     display: 'flex',
                     flexDirection: 'column',
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
                     color: '#4A4E51',
                     fontSize: '0.9rem'
                 }}>
-                    <h3 style={{
+                    <h3 className="footer-header" style={{
                         marginTop: 0,
                         marginBottom: '0.5rem',
                         fontFamily: "'Cinzel', serif",
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                     </h3>
                     <p><strong>Contact No:</strong> +91 7799654545</p>
                     <p><strong>Email:</strong> dharmainfra1999@gmail.com</p>
-                    <div style={{ display: 'flex', gap: '0.25rem', justifyContent: 'flex-end' }}>
+                    <div className="footer-address" style={{ display: 'flex', gap: '0.25rem', justifyContent: 'flex-end' }}>
                         <strong>Address:</strong>
                         <div style={{ textAlign: 'right' }}>
                             Plot No: 82, 83 Balakrishna Nagar,<br />
@@ -69,6 +69,7 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
             </div>
+            <div style={{ height: '4rem' }} className="mobile-only-spacer" />
         </footer>
     );
 };

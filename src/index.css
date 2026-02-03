@@ -359,3 +359,50 @@ h2 {
     width: auto;
   }
 }
+
+/* Footer Responsive Styles */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 2rem !important;
+  }
+
+  .footer-left {
+    align-items: center !important;
+  }
+
+  .footer-separator {
+    display: none !important;
+  }
+
+  .footer-right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .footer-header {
+    text-align: center !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .footer-address {
+      justify-content: center !important;
+  }
+  
+  .footer-address div {
+      text-align: left !important;
+  }
+}
+
+/* Mobile spacer for FAB overlap prevention */
+.mobile-only-spacer {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-only-spacer {
+        display: block;
+    }
+}
