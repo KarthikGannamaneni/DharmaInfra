@@ -21,7 +21,8 @@ const Footer: React.FC = () => {
                                 color: '#4A4E51',
                                 letterSpacing: '0.05em',
                                 lineHeight: 1,
-                                textTransform: 'uppercase'
+                                textTransform: 'uppercase',
+                                textAlign: 'center'
                             }}>
                                 Dharma Infra
                             </span>

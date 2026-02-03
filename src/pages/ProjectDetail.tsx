@@ -152,24 +152,14 @@ const ProjectDetail: React.FC = () => {
                 style={{ borderBottom: '1px solid rgba(0,0,0,0.05)', transition: 'background 0.3s ease' }}
             >
                 <div className="container">
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', // Responsive grid
-                        padding: '2rem 0',
-                        gap: '2rem'
-                    }}>
+                    <div className="specs-grid">
                         {[
                             { label: 'Facing', value: project.facing || 'N/A', icon: <Compass size={24} strokeWidth={1.5} /> },
                             { label: ui.common.plotSize, value: project.size, icon: <Maximize size={24} strokeWidth={1.5} /> },
                             { label: 'Flat Size', value: project.flatSize || 'N/A', icon: <Ruler size={24} strokeWidth={1.5} /> },
                             { label: ui.common.status, value: project.status, icon: <HardHat size={24} strokeWidth={1.5} /> }
                         ].map((item, idx) => (
-                            <div key={idx} style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '1rem',
-                                justifyContent: 'center' // Center content in grid cell
-                            }}>
+                            <div key={idx} className="specs-item">
                                 <div style={{ color: theme.primary }}>{item.icon}</div>
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                                     <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', color: '#666', letterSpacing: '0.5px' }}>{item.label}</span>

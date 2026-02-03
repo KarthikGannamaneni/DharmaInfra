@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav style={{
+        <nav className={`top-navbar ${isProjectDetail ? 'is-project-detail' : ''}`} style={{
             position: 'absolute',
             top: '2rem',
             left: '50%',

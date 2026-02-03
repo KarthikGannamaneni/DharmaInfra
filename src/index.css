@@ -386,23 +386,73 @@ h2 {
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .footer-address {
-      justify-content: center !important;
+    justify-content: center !important;
   }
-  
+
   .footer-address div {
-      text-align: left !important;
+    text-align: left !important;
   }
 }
 
 /* Mobile spacer for FAB overlap prevention */
 .mobile-only-spacer {
-    display: none;
+  display: none;
 }
 
 @media (max-width: 768px) {
-    .mobile-only-spacer {
-        display: block;
-    }
+  .mobile-only-spacer {
+    display: block;
+  }
+
+  /* Hide top navbar on project detail pages on mobile to avoid back button overlap */
+  .top-navbar.is-project-detail {
+    display: none !important;
+  }
+}
+
+/* Project Detail Specs Grid */
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2rem 0;
+  gap: 2rem;
+}
+
+.specs-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  /* Default center for desktop */
+}
+
+@media (max-width: 1024px) {
+  .specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* Tablet: 2x2 grid */
+  }
+}
+
+@media (max-width: 640px) {
+  .specs-grid {
+    grid-template-columns: 1fr;
+    /* Mobile: 1 column */
+    gap: 2.5rem;
+    /* More space between items vertically */
+    width: fit-content;
+    /* Shrink to fit content */
+    margin: 0 auto;
+    /* Center the whole block */
+  }
+
+  .specs-item {
+    justify-content: flex-start;
+    /* Left align items relative to themselves */
+    width: 100%;
+    /* Because the container is fit-content composed of these items, 
+           the widest item sets the width, and others align left to it. 
+           This creates the "straight vertical line" effect for icons. */
+  }
 }
